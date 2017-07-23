@@ -1,0 +1,3754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Muffed</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Wheaten</string>
+			<string>Silver</string>
+			<string>Buff</string>
+			<string>Brown-Red</string>
+			<string>Blue-Wheaten</string>
+			<string>Blue</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Blue-Green</string>
+			<string>Blue</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Ameraucana</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Muffed</string>
+		<key>standardWeight</key>
+		<string>5.5</string>
+        <key>bantamWeight</key>
+        <string>1.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black, Blue, Blue-Wheaten, Brown-Red, Buff, Silver, Wheaten &amp; White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Blue Feathered</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Blue</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Rare</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Andalusian</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>Blue Feathered</string>
+		<key>standardWeight</key>
+		<string>5.5</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Blue</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Crested</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Spangled</string>
+			<string>Silver</string>
+			<string>Gold Spangled</string>
+			<string>Gold</string>
+			<string>Blue Spangled</string>
+			<string>Black Spangled</string>
+			<string>Barthuhner</string>
+			<string>Spitzhauben</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Appenzeller</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Crested</string>
+		<key>standardWeight</key>
+		<string>4</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Spitzhauben, Barthuhner, Black Spangled, Blue Spangled, Gold, Gold Spangled, Silver &amp; Spangled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Rumpless</string>
+			<string>Ear Tufts</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Silver Duckwing</string>
+			<string>Golden Duckwing</string>
+			<string>Black Red</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Blue</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Blue</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Average</string>
+		<key>name</key>
+		<string>Araucana</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>Ear Tufts, Rumpless</string>
+		<key>standardWeight</key>
+		<string>5</string>
+        <key>bantamWeight</key>
+        <string>1.4</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black, Black Red, Golden Duckwing, Silver Duckwing, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array/>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Aseel</string>
+		<key>personality</key>
+		<string>Aggressive</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>
+Black Breasted Red, Dark, Spangled, White, Wheaten</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black Mottled</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single, Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Ancona</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>1.5</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black Mottled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Average</string>
+		<key>name</key>
+		<string>Australorp</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Self Blue</string>
+			<string>Porcelain</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Booted Bantam</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Feather-Footed</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>1.4</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Black, Porcelain, Self Blue, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Nut Brown</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Buckeye</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Nut Brown</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Buff</string>
+			<string>Light</string>
+			<string>Dark</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Brahma</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Feather-Footed</string>
+		<key>standardWeight</key>
+		<string>8+</string>
+        <key>bantamWeight</key>
+        <string>2.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Dark, Light, Buff</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Golden</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Buttercup</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Buttercup</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Golden</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Silver</string>
+			<string>Golden</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Campine</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5</string>
+        <key>bantamWeight</key>
+        <string>1.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Golden, Silver</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Buff</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Catalana</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Buff</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Buff</string>
+			<string>Partridge</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Cushion</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Chantecler</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Partridge, Buff</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Buff</string>
+			<string>Red</string>
+			<string>White Laced</string>
+			<string>White</string>
+			<string>Dark</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Average</string>
+		<key>name</key>
+		<string>Cornish</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>8+</string>
+        <key>bantamWeight</key>
+        <string>2.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Dark, White, White Laced, Red, Buff</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Muffed</string>
+			<string>Crested</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Average</string>
+		<key>name</key>
+		<string>Crevecoeur</string>
+		<key>personality</key>
+		<string>Aggressive</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Crested, Muffed</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>1.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Red</string>
+			<string>Black Breasted</string>
+			<string>Black</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Cubalaya</string>
+		<key>personality</key>
+		<string>Aggressive</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>White, Black, Black Breasted, Red</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Dark Brown</string>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown, Dark Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Delaware</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7</string>
+        <key>bantamWeight</key>
+        <string>1.8</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Barred</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Dominique</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5</string>
+        <key>bantamWeight</key>
+        <string>1.5</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Barred</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Short Legs</string>
+			<string>Five-Toed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Colored</string>
+			<string>Silver-Gray</string>
+			<string>Red</string>
+			<string>Rose Comb White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single, Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Dorking</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Five-Toed, Short Legs</string>
+		<key>standardWeight</key>
+		<string>7</string>
+        <key>bantamWeight</key>
+        <string>1.0</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Red, Colored, Rose Comb White, Silver Grey, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Silver</string>
+			<string>Blue</string>
+			<string>Black</string>
+			<string>Light Brown</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Dutch</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>1.0</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>White, Light Brown, Black, Blue, Silver</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array/>
+		<key>eggColors</key>
+		<array>
+			<string>Blue-Green</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggSize</key>
+		<string>Extra Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Easter Eggers</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6-7</string>
+        <key>bantamWeight</key>
+        <string>1.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>None recognized</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Muffed</string>
+			<string>Five-Toed</string>
+			<string>Feather-Footed</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Mahogany</string>
+			<string>Salmon</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Faverolles</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Feather-Footed, Five-Toed, Muffed</string>
+		<key>standardWeight</key>
+		<string>7-8</string>
+        <key>bantamWeight</key>
+        <string>2.2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Salmon, Mahogany</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Silver Penciled</string>
+			<string>Gold Penciled</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Very Early</string>
+		<key>name</key>
+		<string>Fayoumi</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>3.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Gold &amp; Silver Penciled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Gold Penciled</string>
+			<string>Silver Penciled</string>
+			<string>Spangled</string>
+			<string>Gold Spangled</string>
+			<string>Silver Spangled</string>
+			<string>Black</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Very Early</string>
+		<key>name</key>
+		<string>Hamburg</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>1.5</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Black, Silver &amp; Golden Spangled,  Spangled, Silver &amp; Golden Penciled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Barred</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Holland</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>White &amp; Barred</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Five-Toed</string>
+			<string>Crested</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Mottled</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Houdan</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Crested, Five-Toed</string>
+		<key>standardWeight</key>
+		<string>6-7</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Mottled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Short Legs</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Mottled</string>
+			<string>Birchen</string>
+			<string>Black Tailed</string>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Japanese Bantam</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Short Legs</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>1.3</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Black, White, Black Tailed, Birchen, Mottled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Mottled</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Java</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Black, Mottled, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Extra Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Jersey Giant</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>8+</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Black, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Cukoo (unofficial)</string>
+			<string>White (unofficial)</string>
+			<string>Blue (unofficial)</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>La Fleche</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5.5</string>
+        <key>bantamWeight</key>
+        <string>1.6</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Official: Black. Unofficial: Blue, White, Cukoo.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black/White/Black Pattern</string>
+			<string>Silver</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Lakenvelder</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4</string>
+        <key>bantamWeight</key>
+        <string>1.25</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Silver, (Black/White/Black pattern)</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Extinct</string>
+		<key>brooding</key>
+		<string>N/A</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Lamona</string>
+		<key>personality</key>
+		<string>N/A</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>5.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Blue</string>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Langshan</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Feather-Footed</string>
+		<key>standardWeight</key>
+		<string>7.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Black, White, Blue</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Pearl-White</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Extra Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Very Early</string>
+		<key>name</key>
+		<string>Leghorn (White)</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Pearl-White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Wheaten (female only)</string>
+			<string>Black Breasted Red</string>
+			<string>Red Pyle</string>
+			<string>Spangled</string>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Strawberry</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>Light Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Malay</string>
+		<key>personality</key>
+		<string>Aggressive</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Meat</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>8+</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Black, White, Spangled, Red Pyle and Black Breasted Red, Wheaten (female only)</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White (rose comb)</string>
+			<string>Black (rose comb)</string>
+			<string>Buff (single comb)</string>
+			<string>White (single comb)</string>
+			<string>Black (single comb)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single, Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Extra Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Minorca</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7.5</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Single Comb: Black, Buff, White. Rose Comb: Black &amp; White.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Others</string>
+			<string>Blue</string>
+			<string>Birchen</string>
+			<string>Wheaten</string>
+			<string>White</string>
+			<string>Golden Cuckoo</string>
+			<string>Silver Cuckoo</string>
+			<string>Black Cpper</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Dark Brown</string>
+            <string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Dark Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Marans</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>Feather-Footed</string>
+		<key>standardWeight</key>
+		<string>7</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black Copper, Silver Cuckoo, Golden Cuckoo, White, Wheaten, Birchen, Blue, Others</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Naked Neck</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+			<string>White</string>
+			<string>Red Pyle</string>
+			<string>Birchen</string>
+			<string>Golden Duckwing</string>
+			<string>Silver Duckwing</string>
+			<string>Brown-Red</string>
+			<string>Black-Breasted Red</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Modern Game</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>Naked Neck</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>1.5</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black-Breasted Red, Brown-Red, Silver &amp; Golden Duckwing, Birchen, Red Pyle, White, Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Rich Reddish Brown</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown, Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Very Early</string>
+		<key>name</key>
+		<string>New Hampshire Red</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7</string>
+        <key>bantamWeight</key>
+        <string>1.9</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Rich Reddish Brown</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+			<string>White</string>
+			<string>Red Pyle</string>
+			<string>Silver Duckwing</string>
+			<string>Golden Duckwing</string>
+			<string>Brown-Red</string>
+			<string>Black-Breasted Red</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Old English Game</string>
+		<key>personality</key>
+		<string>Aggressive</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Black-Breasted Red, Brown-Red, Golden &amp; Silver Duckwing, Red Pyle, White, Black, others</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Lavender (unofficial)</string>
+			<string>Splash (unofficial)</string>
+			<string>White</string>
+			<string>Blue</string>
+			<string>Black</string>
+			<string>Buff</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Orpington</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>8</string>
+        <key>bantamWeight</key>
+        <string>2.2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string> Buff, Black, Blue, White. Not Recognized Yet: Splash and Lavender.
+</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Long-Tailed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Gold</string>
+			<string>Silver</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Phoenix</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Long-Tailed</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>1.75</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Silver, Gold</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+			<string>Blue</string>
+			<string>Columbian</string>
+			<string>Partridge</string>
+			<string>Silver Penciled</string>
+			<string>Buff</string>
+			<string>White</string>
+			<string>Barred</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown, Pinkish Brown, Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Plymouth Rock</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7.5</string>
+        <key>bantamWeight</key>
+        <string>2.2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Barred, White, Buff, Silver Penciled, Partridge, Columbian, Blue, Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Crested</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Buff Laced (bearded &amp; non-bearded)</string>
+			<string>White (bearded &amp; non-bearded)</string>
+			<string>Golden (bearded &amp; non-bearded)</string>
+			<string>White Crested Black (bearded)</string>
+			<string>Black Crested White (bearded)</string>
+			<string>Silver (bearded &amp; non-bearded)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Polish</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Crested</string>
+		<key>standardWeight</key>
+		<string>4.5</string>
+        <key>bantamWeight</key>
+        <string>1.8</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string> Bearded: Black Crested White, White Crested Black. Bearded &amp; non-bearded: Golden, Silver, White, Buff Laced.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Reddish brown feathers tipped with black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Redcap</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>One variety: Reddish brown feathers tipped with black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Red</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single, Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Extra Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Rhode Island</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Red, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Splash (unofficial)</string>
+			<string>Red Pyle (unofficial)</string>
+			<string>Lemon Blue (unofficial)</string>
+			<string>Mottled (unofficial)</string>
+			<string>Barred (unofficial)</string>
+			<string>Blue</string>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White, Creamy White</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Rosecomb</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>N/A</string>
+        <key>bantamWeight</key>
+        <string>1.3</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Recognized: Black, White, Blue. Unrecognized: Barred, Mottled, Lemon Blue, Red Pyle, Splash. </string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Silver</string>
+			<string>Golden</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>No</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Difficult To Rear</string>
+		<key>name</key>
+		<string>Sebright Bantam</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+        <key>bantamWeight</key>
+        <string>1.3</string>
+		<key>standardWeight</key>
+		<string>N/A</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Golden, Silver</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black with White Barring (roosters ony)</string>
+			<string>Black with Gold Tints (hens only)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Rare</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Star</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Hens: Black with gold tints. Roosters: Black with white barring.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Muffed</string>
+			<string>Five-Toed</string>
+			<string>Feather-Footed</string>
+			<string>Crested</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>The V</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Average</string>
+		<key>name</key>
+		<string>Sultan</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Crested, Feather-Footed, Five-Toed, Muffed</string>
+		<key>standardWeight</key>
+		<string>4</string>
+        <key>bantamWeight</key>
+        <string>1.4</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Long-Tailed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Splash (unofficial)</string>
+			<string>Blue (unofficial)</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Pea</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Sumatra</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Game</string>
+		<key>specialAttribute</key>
+		<string>Long-Tailed</string>
+		<key>standardWeight</key>
+		<string>5.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string> Recognized: Black only. Unrecognized: Blue, Splash.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Light</string>
+			<string>Red</string>
+			<string>Speckled</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Sussex</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>7</string>
+        <key>bantamWeight</key>
+        <string>2.2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Speckled, Red, Light</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Barred (unofficial)</string>
+			<string>Blue Laced Red (unofficial)</string>
+			<string>Blue</string>
+			<string>Columbian</string>
+			<string>Silver Penciled</string>
+			<string>Partridge</string>
+			<string>Buff</string>
+			<string>Black</string>
+			<string>White</string>
+			<string>Golden Laced</string>
+			<string>Silver Laced</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Rare</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Wyandotte</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6.5</string>
+        <key>bantamWeight</key>
+        <string>2.2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Official: Silver &amp; Golden Laced, White, Black, Buff, Partridge, Silver Penciled, Columbian, Blue. Unofficial: Blue Laced Red, Barred &amp; others.</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Long-Tailed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Red Shouldered</string>
+			<string>White</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Pea, Walnut</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Yokohama</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Long-Tailed</string>
+		<key>standardWeight</key>
+		<string>4</string>
+        <key>bantamWeight</key>
+        <string>1.8</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>White, Red Shouldered</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White</string>
+			<string>Self Blue</string>
+			<string>Mottled</string>
+			<string>Golden Neck</string>
+			<string>Porcelain</string>
+			<string>Mille Fleur</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White, Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Difficult To Rear</string>
+		<key>name</key>
+		<string>Belgian Bearded d&apos;Uccle Bantam</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Feather-Footed</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>1.6</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Mille Fleur, Black, Porcelain, Golden Neck, Mottled, Self Blue, White</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Black</string>
+			<string>White</string>
+			<string>Blue-Laced</string>
+			<string>Double-Leced</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Dark Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Rare</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Dark Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Barnevelder</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6-7</string>
+        <key>bantamWeight</key>
+        <string>2.25</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Double-laced, Blue-laced, White &amp; Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Light Yellow (unofficial)</string>
+			<string>Dark Brown (unofficial)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Jaerhorn</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>3.5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Unrecognized Breed: Dark Brown, Light Yellow</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Golden Duckwing</string>
+			<string>Columbian</string>
+			<string>Black-Tailed Red</string>
+			<string>Silver</string>
+			<string>Buff</string>
+			<string>Black</string>
+			<string>Light Brown</string>
+			<string>Dark Brown</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single, Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Leghorn (Non White)</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string> Dark Brown, Light Brown, Black, Buff, Silver, Black-Tailed Red, Columbian, Golden Duckwing</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Naked Neck</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Red</string>
+			<string>Buff</string>
+			<string>White</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Naked Neck (Turken)</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Naked Neck</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>1.5</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black, White, Buff, Red</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Five-Toed</string>
+			<string>Feather-Footed</string>
+			<string>Crested</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Blue (bearded &amp; non-bearded)</string>
+			<string>Gray (bearded &amp; non-bearded)</string>
+			<string>Buff (bearded &amp; non-bearded)</string>
+			<string>Partridge (bearded &amp; non-bearded)</string>
+			<string>White (bearded &amp; non-bearded)</string>
+			<string>Black (bearded &amp; non-bearded)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Lightly Tinted</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Walnut</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Lightly Tinted</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Silkie Bantam</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Average</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Crested, Feather-Footed, Five-Toed</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>2.2</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Bearded &amp; Non-Bearded: Black, White, Partridge, Buff, Gray, Blue</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>White-Faced Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>White</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<false/>
+		<key>eggColor</key>
+		<string>White</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>Yes</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Spanish White-Faced Black</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Layer</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>White-Faced Black</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array/>
+		<key>varieties</key>
+		<array>
+			<string>Red Partridge</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Dark Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Occasional</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Dark Brown</string>
+		<key>eggSize</key>
+		<string>Large</string>
+		<key>fancy</key>
+		<false/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Early</string>
+		<key>name</key>
+		<string>Welsummer</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Above Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>None</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>2</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Red Partridge</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Mottled</string>
+			<string>White</string>
+			<string>Mille Fleur</string>
+			<string>Cuckoo</string>
+			<string>Buff</string>
+			<string>Blue</string>
+			<string>Black</string>
+			<string>Porcelain</string>
+			<string>Quail</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Creamy White</string>
+		</array>
+		<key>availability</key>
+		<string>Common</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<false/>
+		<key>comb</key>
+		<string>Rose</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Creamy White</string>
+		<key>eggSize</key>
+		<string>Tiny</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Difficult To Rear</string>
+		<key>name</key>
+		<string>Belgian D&apos;Anvers Bantam</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Bearded</string>
+		<key>standardWeight</key>
+        <string>N/A</string>
+        <key>bantamWeight</key>
+		<string>1.3</string>
+		<key>type</key>
+		<string>Bantam</string>
+		<key>variety</key>
+		<string>Quail, Porcelain, Black, Blue, Buff, Cuckoo, Mille Fleur, White, Mottled</string>
+	</dict>
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Feather-Footed</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>Red</string>
+			<string>Columbian</string>
+			<string>Blue</string>
+			<string>Birchen</string>
+			<string>Mottled</string>
+			<string>Silver Laced</string>
+			<string>Golden Laced</string>
+			<string>Brown Red</string>
+			<string>Barred</string>
+			<string>White</string>
+			<string>Partridge</string>
+			<string>Buff</string>
+			<string>Black</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Brown</string>
+			<string>Lightly Tinted</string>
+		</array>
+		<key>availability</key>
+		<string>Uncommon</string>
+		<key>brooding</key>
+		<string>Frequent</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Single</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Lightly Tinted, Brown</string>
+		<key>eggSize</key>
+		<string>Med.</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Cochin</string>
+		<key>personality</key>
+		<string>Docile</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Display</string>
+		<key>specialAttribute</key>
+		<string>Feather-Footed</string>
+		<key>standardWeight</key>
+		<string>8.5</string>
+        <key>bantamWeight</key>
+        <string>1.3</string>
+		<key>type</key>
+		<string>Both</string>
+		<key>variety</key>
+		<string>Black, Buff, Partridge, White, Barred, Brown Red, Golden &amp; Silver Laced, Mottled, Birchen, Blue, Columbian, Red</string>
+	</dict>
+    <dict>
+        <key>specialAttributes</key>
+        <array>
+        </array>
+        <key>varieties</key>
+        <array>
+            <string>Blue Red</string>
+            <string>Brown Red</string>
+            <string>Silver Duckwing White</string>
+            <string>Birchen</string>
+            <string>Red Pyle</string>
+            <string>Golden Duckwing</string>
+            <string>Black Breaseted Red Blue</string>
+            <string>Black</string>
+        </array>
+        <key>eggColors</key>
+        <array>
+            <string>White</string>
+            <string>Cream</string>
+        </array>
+        <key>availability</key>
+        <string>Uncommon</string>
+        <key>brooding</key>
+        <string>Frequent</string>
+        <key>coldTolerant</key>
+        <true/>
+        <key>comb</key>
+        <string>Pea, Straight and Triple</string>
+        <key>confinement</key>
+        <true/>
+        <key>eggSize</key>
+        <string>Med.</string>
+        <key>fancy</key>
+        <true/>
+        <key>heatTolerant</key>
+        <true/>
+        <key>imageURL</key>
+        <string>not applicable</string>
+        <key>maturing</key>
+        <string>Slow</string>
+        <key>name</key>
+        <string>American Game Fowl</string>
+        <key>personality</key>
+        <string>Aggressive</string>
+        <key>productivity</key>
+        <string>Average</string>
+        <key>purpose</key>
+        <string>Display</string>
+        <key>standardWeight</key>
+        <string>4 - 5</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+        <key>type</key>
+        <string>Both</string>
+    </dict>
+
+	<dict>
+		<key>specialAttributes</key>
+		<array>
+			<string>Muffed</string>
+			<string>Bearded</string>
+		</array>
+		<key>varieties</key>
+		<array>
+			<string>White (unofficial)</string>
+			<string>Red (unofficial)</string>
+		</array>
+		<key>eggColors</key>
+		<array>
+			<string>Light Brown</string>
+		</array>
+		<key>availability</key>
+		<string>Rare</string>
+		<key>brooding</key>
+		<string>Non-Setter</string>
+		<key>coldTolerant</key>
+		<true/>
+		<key>comb</key>
+		<string>Walnut</string>
+		<key>confinement</key>
+		<true/>
+		<key>eggColor</key>
+		<string>Light Brown</string>
+		<key>eggSize</key>
+		<string>Small</string>
+		<key>fancy</key>
+		<true/>
+		<key>heatTolerant</key>
+		<string>N/A</string>
+		<key>imageURL</key>
+		<string>not applicable</string>
+		<key>maturing</key>
+		<string>Slow</string>
+		<key>name</key>
+		<string>Orloff</string>
+		<key>personality</key>
+		<string>Active</string>
+		<key>productivity</key>
+		<string>Below Avg.</string>
+		<key>purpose</key>
+		<string>Dual Purpose</string>
+		<key>specialAttribute</key>
+		<string>Bearded, Muffed</string>
+		<key>standardWeight</key>
+		<string>6</string>
+        <key>bantamWeight</key>
+        <string>N/A</string>
+		<key>type</key>
+		<string>Standard</string>
+		<key>variety</key>
+		<string>Not Recognized - Red &amp; White</string>
+	</dict>
+</array>
+</plist>

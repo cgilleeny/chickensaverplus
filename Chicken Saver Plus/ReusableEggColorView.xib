@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReusableEggColorView" customModule="Chicken_Saver_Plus" customModuleProvider="target">
+            <connections>
+                <outlet property="colorLabel" destination="gxW-z2-Yhg" id="bg6-k0-1ya"/>
+                <outlet property="imageView" destination="FVl-Bl-JF9" id="Ztp-nE-NGq"/>
+                <outlet property="shadeView" destination="MqU-ta-Lxg" id="M6V-PW-QGD"/>
+                <outlet property="view" destination="iN0-l3-epB" id="oUE-s9-BwL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="154" height="154"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FVl-Bl-JF9">
+                    <rect key="frame" x="14.5" y="29" width="125" height="125"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="97Q-Vx-ezu"/>
+                        <constraint firstAttribute="width" constant="125" id="axx-we-5rI"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-ta-Lxg">
+                    <rect key="frame" x="0.0" y="0.0" width="154" height="154"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxW-z2-Yhg">
+                    <rect key="frame" x="56" y="0.0" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="FVl-Bl-JF9" firstAttribute="top" secondItem="gxW-z2-Yhg" secondAttribute="bottom" constant="8" id="7gl-DZ-6K2"/>
+                <constraint firstItem="gxW-z2-Yhg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9AK-OT-H9l"/>
+                <constraint firstAttribute="bottom" secondItem="MqU-ta-Lxg" secondAttribute="bottom" id="AYe-6k-RWL"/>
+                <constraint firstItem="MqU-ta-Lxg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SRW-IW-6Js"/>
+                <constraint firstAttribute="bottom" secondItem="FVl-Bl-JF9" secondAttribute="bottom" id="TGz-wA-rEe"/>
+                <constraint firstAttribute="trailing" secondItem="MqU-ta-Lxg" secondAttribute="trailing" id="Te4-rf-2cp"/>
+                <constraint firstItem="MqU-ta-Lxg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k5D-AD-k1a"/>
+                <constraint firstItem="FVl-Bl-JF9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="liA-Dm-aqO"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="380" y="23"/>
+        </view>
+    </objects>
+</document>

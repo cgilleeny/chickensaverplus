@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Alarm" representedClassName=".Alarm" syncable="YES">
+        <attribute name="ext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="offset" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sound" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Breed" representedClassName=".Breed" syncable="YES">
+        <attribute name="availability" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bantamWeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="brooding" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coldTolerant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="confinement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eggSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fancy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="heatTolerant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maturing" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productivity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purpose" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="standardWeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="eggColors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EggColor" inverseName="breed" inverseEntity="EggColor" syncable="YES"/>
+        <relationship name="specialAttributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpecialAttribute" inverseName="breed" inverseEntity="SpecialAttribute" syncable="YES"/>
+        <relationship name="varieties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Variety" inverseName="breed" inverseEntity="Variety" syncable="YES"/>
+    </entity>
+    <entity name="Day" representedClassName=".Day" syncable="YES">
+        <attribute name="civilDawn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="civilDusk" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sunset" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="EggColor" representedClassName=".EggColor" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="breed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Breed" inverseName="eggColors" inverseEntity="Breed" syncable="YES"/>
+    </entity>
+    <entity name="SpecialAttribute" representedClassName=".SpecialAttribute" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="breed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Breed" inverseName="specialAttributes" inverseEntity="Breed" syncable="YES"/>
+    </entity>
+    <entity name="Variety" representedClassName=".Variety" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="breed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Breed" inverseName="varieties" inverseEntity="Breed" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Alarm" positionX="-45" positionY="135" width="128" height="90"/>
+        <element name="Breed" positionX="-63" positionY="-18" width="128" height="345"/>
+        <element name="Day" positionX="-36" positionY="135" width="128" height="135"/>
+        <element name="EggColor" positionX="-36" positionY="144" width="128" height="75"/>
+        <element name="SpecialAttribute" positionX="-18" positionY="153" width="128" height="75"/>
+        <element name="Variety" positionX="-54" positionY="135" width="128" height="75"/>
+    </elements>
+</model>
