@@ -53,8 +53,26 @@ class ManageNotificationsVC: UIViewController, UITableViewDelegate, UITableViewD
         })
     }
     
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = AppColor.darkTextColor
+        if let font = UIFont(name: "Noteworthy-Bold", size: 19.0) {
+            (view as! UITableViewHeaderFooterView).textLabel?.font = font
+            (view as! UITableViewHeaderFooterView).textLabel?.textColor = AppColor.darkestTextColor
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Future Local Notifications"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 66.0
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85.0
+        return 86.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,21 +84,19 @@ class ManageNotificationsVC: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationRequestCell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationRequestCell", for: indexPath)
         let notificationRequest = notificationRequests[indexPath.row]
-
-        cell?.textLabel?.text = notificationRequest.identifier
+        cell.textLabel?.text = notificationRequest.identifier
+        cell.textLabel?.textColor = AppColor.darkestTextColor
         if let trigger = notificationRequest.trigger as? UNCalendarNotificationTrigger {
             if let nextTriggerDate = trigger.nextTriggerDate() as Date? {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                cell?.detailTextLabel?.text = dateFormatter.string(from: nextTriggerDate)
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+                cell.detailTextLabel?.text = dateFormatter.string(from: nextTriggerDate)
+                cell.detailTextLabel?.textColor = AppColor.darkestTextColor
             }
-            //print("trigger.dateComponents - year: \(trigger.dateComponents.year), month: \(trigger.dateComponents.month), day: \(trigger.dateComponents.day), hour: \(trigger.dateComponents.hour), minute: \(trigger.dateComponents.minute)")
-           // cell?.detailTextLabel?.text = String(format: "%@-%@-%@ %@:%@", trigger.dateComponents.year!, trigger.dateComponents.month!, trigger.dateComponents.day!, trigger.dateComponents.hour!, trigger.dateComponents.minute!)
         }
-        
-        return cell!
+        return cell
     }
 
     

@@ -10,7 +10,16 @@ import UIKit
 import CoreData
 import CoreLocation
 import UserNotifications
+import Alamofire
 
+let host = "http://ec2-54-202-77-244.us-west-2.compute.amazonaws.com:8080/ChickenSaverService/"
+
+@objc protocol AlamofireDelegate: class {
+    @objc optional func didFinishGet(json:[String: Any]?)
+    @objc optional func didFinishGetWithError(errorMessage:String)
+    @objc optional func didFinishPost(json:[String: Any]?)
+    @objc optional func didFinishPostWithError(errorMessage:String)
+}
 
 struct SettingsConstants {
     static let pushMode = "PushMode"
@@ -21,20 +30,20 @@ struct AppColor {
     static let controls = UIColor(red: 0x1B/0xFF, green: 0x46/0xFF, blue: 0x72/0xFF, alpha: 1)
     static let button = UIColor(red: 0x2C/0xFF, green: 0x2C/0xFF, blue: 0x2C/0xFF, alpha: 1)
     static let textBoxGrey = UIColor(red: 0xF5/0xFF, green: 0xF5/0xFF, blue: 0xF5/0xFF, alpha: 1)
-    static let lightTextColor = UIColor.init(colorLiteralRed: 43/255.0, green: 170/255.0, blue: 226/255.0, alpha: 0.4)
-    static let darkTextColor = UIColor.init(colorLiteralRed: 43/255.0, green: 170/255.0, blue: 226/255.0, alpha: 1.0)
-    static let darkerTextColor = UIColor.init(colorLiteralRed: 0x22/255.0, green: 0x88/255.0, blue: 0xB5/255.0, alpha: 1.0)
-    static let darkestTextColor = UIColor.init(colorLiteralRed: 0x1B/255.0, green: 0x6D/255.0, blue: 0x91/255.0, alpha: 1.0)
-    static let darkerYetTextColor = UIColor.init(colorLiteralRed: 0x16/255.0, green: 0x57/255.0, blue: 0x74/255.0, alpha: 1.0)
-    static let goldColor = UIColor.init(colorLiteralRed: 0xFF/255.0, green: 0xD6/255.0, blue: 0x2F/255.0, alpha: 1.0)
-    static let lightGoldColor = UIColor.init(colorLiteralRed: 0xFF/255.0, green: 0xE2/255.0, blue: 0x6C/255.0, alpha: 1.0)
-    static let paleGoldColor = UIColor.init(colorLiteralRed: 0xFF/255.0, green: 0xED/255.0, blue: 0xA3/255.0, alpha: 1.0)
-    static let paleBlueColor = UIColor.init(colorLiteralRed: 0xB9/255.0, green: 0xE4/255.0, blue: 0xF6/255.0, alpha: 1.0)
+    static let lightTextColor = UIColor(red: 43/255.0, green: 170/255.0, blue: 226/255.0, alpha: 0.4)
+    static let darkTextColor = UIColor(red: 43/255.0, green: 170/255.0, blue: 226/255.0, alpha: 1.0)
+    static let darkerTextColor = UIColor(red: 0x22/255.0, green: 0x88/255.0, blue: 0xB5/255.0, alpha: 1.0)
+    static let darkestTextColor = UIColor(red: 0x1B/255.0, green: 0x6D/255.0, blue: 0x91/255.0, alpha: 1.0)
+    static let darkerYetTextColor = UIColor(red: 0x16/255.0, green: 0x57/255.0, blue: 0x74/255.0, alpha: 1.0)
+    static let goldColor = UIColor(red: 0xFF/255.0, green: 0xD6/255.0, blue: 0x2F/255.0, alpha: 1.0)
+    static let lightGoldColor = UIColor(red: 0xFF/255.0, green: 0xE2/255.0, blue: 0x6C/255.0, alpha: 1.0)
+    static let paleGoldColor = UIColor(red: 0xFF/255.0, green: 0xED/255.0, blue: 0xA3/255.0, alpha: 1.0)
+    static let paleBlueColor = UIColor(red: 0xB9/255.0, green: 0xE4/255.0, blue: 0xF6/255.0, alpha: 1.0)
 }
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate, RestfulServicesDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate/*, RestfulServicesDelegate*/, AlamofireDelegate {
 
     var window: UIWindow?
     var locationManager: CLLocationManager = CLLocationManager()
@@ -42,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var coopLocation: CLLocation?
     var token: String?
     var skip: Int = 4
-    var restfulServices = RestfulServices()
-    
+    //var restfulServices = RestfulServices()
+    weak var delegate:AlamofireDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         registerDefaultsFromSettingsBundle()
@@ -369,41 +378,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         //print(userInfo[AnyHashable("aps")] ?? "default value")
 
         if let sunset = userInfo["sunset"] as? String, let daylength = userInfo["daylength"] as? Int {
+            submitAckPush()
             print(daylength)
             print(sunset)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.S"
             dateFormatter.timeZone = TimeZone(identifier: "GMT")
             if let sunsetTime = dateFormatter.date(from: sunset) {
-                print(sunsetTime)
-                print(sunsetTime.description)
-                let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: sunsetTime)
-                print("dateComponents - year: \(String(describing: dateComponents.year)), month: \(String(describing: dateComponents.month)), day: \(String(describing: dateComponents.day)), hour: \(String(describing: dateComponents.hour)), minute: \(String(describing: dateComponents.minute))")
-                
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "offset", ascending: true)]
-                
-                var alarms: [Alarm]?
-                do {
-                    alarms = try self.managedObjectContext.fetch(fetchRequest) as? [Alarm]
-                } catch  {
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "AlarmRetrievalFailed"), object: nil, userInfo:["error": error])
-                    completionHandler(UIBackgroundFetchResult.noData)
-                    return
-                }
-                for alarm in alarms! {
-                    let alarmTime = sunsetTime.addingTimeInterval(alarm.offset!.doubleValue * 60.0)
-                    print("alarm.offset!.doubleValue: \(alarm.offset!.doubleValue), alarmTime: \(alarmTime)")
-                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: alarmTime)
-                    UNUserNotificationCenter.current().add(self.buildNotificationRequest(sunset: dateComponents, daylength: daylength, sound: alarm.sound!)) { error in
-                        UNUserNotificationCenter.current().delegate = self
-                        if let error = error {
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: "BuildNotificationFailed"), object: nil, userInfo:["error": error])
-                            print(error.localizedDescription)
-                        }
+                UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+                    let notificationRequests = requests.filter() {$0.identifier .contains("sunsetRequest")}
+                    var identifiers = [String]()
+                    for notificationRequest in notificationRequests {
+                        identifiers.append(notificationRequest.identifier)
                     }
-                }
-                completionHandler(UIBackgroundFetchResult.noData)
+                    if identifiers.count > 0 {
+                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+                    }
+                    print(sunsetTime)
+                    print(sunsetTime.description)
+                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: sunsetTime)
+                    print("dateComponents - year: \(String(describing: dateComponents.year)), month: \(String(describing: dateComponents.month)), day: \(String(describing: dateComponents.day)), hour: \(String(describing: dateComponents.hour)), minute: \(String(describing: dateComponents.minute))")
+                    
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
+                    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "offset", ascending: true)]
+                    
+                    do {
+                        if let alarms = try self.managedObjectContext.fetch(fetchRequest) as? [Alarm] {
+                            for alarm in alarms {
+                                let alarmTime = sunsetTime.addingTimeInterval(alarm.offset!.doubleValue * 60.0)
+                                print("alarm.offset!.doubleValue: \(alarm.offset!.doubleValue), alarmTime: \(alarmTime)")
+                                let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: alarmTime)
+                                
+                                UNUserNotificationCenter.current().add(self.buildNotificationRequest(sunset: dateComponents, daylength: daylength, sound: alarm.sound!)) { error in
+                                    UNUserNotificationCenter.current().delegate = self
+                                    if let error = error {
+                                        NotificationCenter.default.post(name: Notification.Name(rawValue: "BuildNotificationFailed"), object: nil, userInfo:["error": error])
+                                        print(error.localizedDescription)
+                                    }
+                                }
+                            }
+                        }
+                        completionHandler(UIBackgroundFetchResult.noData)
+                    } catch  {
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "AlarmRetrievalFailed"), object: nil, userInfo:["error": error])
+                        completionHandler(UIBackgroundFetchResult.noData)
+                        return
+                    }
+                })
             }
         }
     }
@@ -415,42 +436,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("token: \(token!)")
         UNUserNotificationCenter.current().getNotificationSettings{ settings in
             self.updateForRemoteNotifications()
-            
-            /*
-            let device = UIDevice()
-            let deviceName = device.name
-            let deviceModel = device.model
-            let systemVersion = device.systemVersion
-            let deviceId = device.identifierForVendor!.uuidString
-            
-            var appName: String?
-            
-            if let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String? {
-                appName = appDisplayName
-            } else {
-                appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String?
-            }
-            
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String?
-            if let token = self.token as String? {
-                let postDictionary = ["appname":appName as AnyObject,
-                                      "appversion":appVersion as AnyObject,
-                                      "deviceuid":deviceId as AnyObject,
-                                      "devicename":deviceName as AnyObject,
-                                      "devicetoken":token as AnyObject,
-                                      "devicemodel":deviceModel as AnyObject,
-                                      "deviceversion":systemVersion as AnyObject,
-                                      "pushbadge":(settings.badgeSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushalert":(settings.alertSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushsound":(settings.soundSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "development":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
-                                      "latitude": (self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.latitude) as AnyObject,
-                                      "longitude":(self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.longitude) as AnyObject,
-                                      ]
-                print(postDictionary)
-                self.restfulServices.postJSON(servlet: "Register", withDictionary: postDictionary)
-            }
-            */
         }
     }
 
@@ -479,37 +464,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             
             let appVersion = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String?
+            
             if let token = self.token as String? {
-                (UIApplication.shared.delegate as! AppDelegate).restfulServices.delegate = self
-                let postDictionary = ["appname":appName as AnyObject,
-                                      "appversion":appVersion as AnyObject,
-                                      "deviceuid":deviceId as AnyObject,
-                                      "devicename":deviceName as AnyObject,
-                                      "devicetoken":token as AnyObject,
-                                      "devicemodel":deviceModel as AnyObject,
-                                      "deviceversion":systemVersion as AnyObject,
-                                      "pushbadge":(settings.badgeSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushalert":(settings.alertSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushsound":(settings.soundSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "development":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
-                                      "latitude": (self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.latitude) as AnyObject,
-                                      "longitude":(self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.longitude) as AnyObject,
-                                      ]
-                print(postDictionary)
-                self.restfulServices.postJSON(servlet: "Register", withDictionary: postDictionary)
+                let path = String(format: "%@Register", host)
+                self.delegate = self
+                let parameters = ["appname":appName as AnyObject,
+                                  "appversion":appVersion as AnyObject,
+                                  "deviceuid":deviceId as AnyObject,
+                                  "devicename":deviceName as AnyObject,
+                                  "devicetoken":token as AnyObject,
+                                  "devicemodel":deviceModel as AnyObject,
+                                  "deviceversion":systemVersion as AnyObject,
+                                  "pushbadge":(settings.badgeSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
+                                  "pushalert":(settings.alertSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
+                                  "pushsound":(settings.soundSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
+                                  "development":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
+                                  "latitude": (self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.latitude) as AnyObject,
+                                  "longitude":(self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.longitude) as AnyObject]
+                print("parameters: \(parameters), host: \(host)")
+                Alamofire.request(URL(string: path)!,
+                                  method: .post, parameters: parameters)
+                    .responseJSON { response in
+                        guard response.result.isSuccess else {
+                            self.delegate?.didFinishPostWithError!(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"))
+                            return
+                        }
+                        
+                        guard let responseJSON = response.result.value as? [String: Any] else {
+                            self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""))
+                            return
+                        }
+                        
+                        if let status = responseJSON["status"] as? String {
+                            if status != "OK" {
+                                print(status)
+                                self.delegate?.didFinishPostWithError!(errorMessage: status)
+                            }
+                        } else {
+                            self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""))
+                        }
+                }
             }
         }
     }
     
     func registerForRemoteNotifications() {
-        //NotificationCenter.default.addObserver(self, selector: #selector(MapVC.remoteNotificationAuthorizationFailed(_:)), name:NSNotification.Name(rawValue: "RemoteNotificationRegistrationError"), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(NotificationOptionsVC.remoteNotificationAuthorizationFailed(_:)), name:NSNotification.Name(rawValue: "RemoteNotificationRegistrationError"), object: nil)
-        (UIApplication.shared.delegate as! AppDelegate).restfulServices.delegate = self
         let center = UNUserNotificationCenter.current()
         
-        let repeat5 = UNNotificationAction(identifier: "repeat5", title: String.localizedStringWithFormat("Repeat In %d Minutes", 5), options: [])
-        let repeat15 = UNNotificationAction(identifier: "repeat15", title: String.localizedStringWithFormat("Repeat In %d Minutes", 15), options: [])
-        let repeat30 = UNNotificationAction(identifier: "repeat30", title: String.localizedStringWithFormat("Repeat In %d Minutes", 30), options: [])
+        let repeat5 = UNNotificationAction(identifier: "repeat5", title: String.localizedStringWithFormat("Snooze for %d Minutes", 5), options: [])
+        let repeat15 = UNNotificationAction(identifier: "repeat15", title: String.localizedStringWithFormat("Snooze for %d Minutes", 15), options: [])
+        let repeat30 = UNNotificationAction(identifier: "repeat30", title: String.localizedStringWithFormat("Snooze for %d Minutes", 30), options: [])
         let category = UNNotificationCategory(identifier: "repeatCategory", actions: [repeat5, repeat15, repeat30], intentIdentifiers: [], options: [.customDismissAction])
         
         center.setNotificationCategories([category])
@@ -523,8 +527,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
                 else
                 {
-                    print("Allow")
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async(execute: {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    })
                 }
             }
         }
@@ -533,7 +538,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func buildNotificationRequest(sunset: DateComponents, daylength: Int, sound: String) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("Sunset Alert", comment: "")
-        content.subtitle = String.localizedStringWithFormat("Sunset time: %@", sunset.description)
+        if let sunsetDate = Calendar.current.date(from: sunset) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh:mm a"
+            content.subtitle = String.localizedStringWithFormat("Today's sunset: %@", dateFormatter.string(from: sunsetDate))
+        }
         content.body = NSLocalizedString("Time to put the chickens away!", comment: "")
         
         switch sound {
@@ -542,7 +551,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         case "Crowing":
             content.sound = UNNotificationSound(named: "Crowing.wav")
         default:
-            content.sound = UNNotificationSound(named: sound)
+            content.sound = UNNotificationSound.default()
         }
 
         content.categoryIdentifier = "repeatCategory"
@@ -606,33 +615,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return UNNotificationRequest(identifier: "sunsetRequest", content: content, trigger: trigger)
     }
     
-    // MARK: - Restfull Services Protocol
-    
-    func didFinishPostWithError(errorMessage:String) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["error": errorMessage])
-    }
-    
-    
-    func didFinishPost(jsonData:Dictionary<String, AnyObject>?) {
-        if let jsonData = jsonData {
-            if let status = jsonData["status"] as? String {
-                if status == "OK" {
-                    print("OK")
-                } else {
-                    print(status)
-                }
+    func submitAckPush() {
+        if let token = self.token as String?, let identifierForVendor = UIDevice().identifierForVendor {
+            let path = String(format: "%@PushStatus", host)
+            self.delegate = self
+            Alamofire.request(URL(string: path)!,
+                              method: .post, parameters: ["uid":identifierForVendor.uuidString  as AnyObject,
+                                                          "token":token as AnyObject])
+                .responseJSON { response in
+                    guard response.result.isSuccess else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"))
+                        return
+                    }
+                    
+                    guard let responseJSON = response.result.value as? [String: Any] else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""))
+                        return
+                    }
+                    
+                    if let status = responseJSON["status"] as? String {
+                        if status != "OK" {
+                            print(status)
+                            self.delegate?.didFinishPostWithError!(errorMessage: status)
+                        }
+                    } else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""))
+                    }
             }
         }
     }
-
+    
+    // MARK: - Restfull Services Protocol
+    
+    func didFinishPostWithError(errorMessage:String) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["errorMessage": errorMessage])
+    }
 }
 
 extension UIImage {
     
     func saveToURL(name: String) -> URL? {
         let imageData = UIImageJPEGRepresentation(self, 1.0)
-        
-        //let imageData = UIImagePNGRepresentation(self)
+
         let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         do {
             let imageURL = documentsURL.appendingPathComponent("\(name).jpg")

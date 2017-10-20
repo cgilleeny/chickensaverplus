@@ -17,8 +17,9 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBOutlet weak var tableView: UITableView!
     
     ///The directories where we will first start looking for files as well as sub directories.
-    let rootSoundDirectories: [String] = ["/Library/Ringtones", "/System/Library/Audio/UISounds"]
+    //let rootSoundDirectories: [String] = ["/Library/Ringtones", "/System/Library/Audio/UISounds"]
     
+    /*
     lazy var soundDirectories: [NSMutableDictionary] = {
         var directories = [NSMutableDictionary]()
         for directory in self.rootSoundDirectories { //seed the directories we know about.
@@ -82,7 +83,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
         return directories
     }()
-    
+    */
     
     
     var moc: NSManagedObjectContext!
@@ -98,7 +99,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                       NSLocalizedString("15 minutes after sunset", comment: ""),NSLocalizedString("20 minutes after sunset", comment: ""),NSLocalizedString("25 minutes after sunset", comment: ""),NSLocalizedString("30 minutes after sunset", comment: "")]
     
     let offsets: [Int16] = [-30, -25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30]
-    var section: Int = 0
+    //var section: Int = 0
     var row: Int = 0
     var player: AVAudioPlayer?
     var alarm: Alarm?
@@ -108,6 +109,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
         for soundDirectory in soundDirectories {
             let path = soundDirectory["path"] as! String
             let files = soundDirectory["files"] as! [String]
@@ -116,7 +118,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 print("file: \(file)")
             }
         }
-        
+        */
         // Do any additional setup after loading the view.
     }
     
@@ -129,21 +131,11 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }
             if let sound = alarm.sound as String? {
                 if sound == "Clucking" {
-                    section = 0
                     row = 0
                 } else if sound == "Crowing" {
-                    section = 0
                     row = 1
                 } else {
-                    for index in 0..<soundDirectories.count {
-                        let directory = soundDirectories[index]
-                        let files = directory["files"] as! [String]
-                        if files.contains(sound) {
-                            section = index + 1
-                            row = files.index(of: sound)!
-                            break
-                        }
-                    }
+                    row = 2
                 }
             }
         } else {
@@ -167,37 +159,54 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBAction func saveBarButtonHandler(_ sender: UIBarButtonItem) {
         do {
             var sound: String?
-            //var ext: String?
-            
-            if section == 0 {
-                if row == 0 {
-                    sound = "Clucking"
-                    //ext = "ext"
-                } else {
-                    sound = "Crowing"
-                    //ext = "ext"
-                }
-            } else {
-                let directory = soundDirectories[section - 1]
-                let files = directory["files"] as! [String]
-                let path = directory["path"] as! String
-                let filePath: String = String(format: "%@/%@", path, files[row])
-                let url: URL = URL(fileURLWithPath: filePath)
-                sound = filePath
-                //sound = files[row]
-            }
-            print("offsets[pickerView.selectedRow(inComponent: 0)]: \(offsets[pickerView.selectedRow(inComponent: 0)])")
-            if let alarm = alarm as Alarm? {
-                alarm.offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber?
-                alarm.sound = sound
-                try self.moc.save()
-            } else {
-                try Alarm.create(self.moc, offset: offsets[pickerView.selectedRow(inComponent: 0)], sound: sound!)
-            }
 
-            DispatchQueue.main.async(execute: {
-                _ = self.navigationController?.popViewController(animated: true)
-            })
+            switch row {
+            case 0:
+                sound = "Clucking"
+            case 1:
+                sound = "Crowing"
+            case 2:
+                sound = "Default"
+            default:
+                sound = "Default"
+            }
+            
+            print("offsets[pickerView.selectedRow(inComponent: 0)]: \(offsets[pickerView.selectedRow(inComponent: 0)])")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
+            if let alarms = try moc.fetch(fetchRequest) as? [Alarm] {
+                let offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber
+                if let alarmWithOffset = alarms.first(where: {$0.offset == offset}) {
+                    if let alarm = alarm as Alarm? {
+                        if alarmWithOffset === alarm {
+                            alarm.sound = sound
+                            try self.moc.save()
+                            DispatchQueue.main.async(execute: {
+                                _ = self.navigationController?.popViewController(animated: true)
+                            })
+                        }
+                    }
+                    let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
+                    let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:{ (UIAlertAction)in
+                        return
+                    }))
+                    DispatchQueue.main.async(execute: {
+                        self.present(alert, animated: true, completion: nil)
+                    })
+                } else {
+                    if let alarm = alarm as Alarm? {
+                        alarm.offset = offset
+                        alarm.sound = sound
+                        try self.moc.save()
+                    } else {
+                        try Alarm.create(self.moc, offset: offset, sound: sound!)
+                    }
+                    DispatchQueue.main.async(execute: {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
         } catch {
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
             let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController.performFetch for Alarm failed: %@", comment: "fetchedResultsController.performFetch error"), "\(error)")
@@ -221,6 +230,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     func playSound(url: URL) {
         do {
+            
             player = try AVAudioPlayer(contentsOf: url)
             guard let player = player else { return }
             
@@ -273,11 +283,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Chicken Sounds"
-        }
-        let directory = soundDirectories[section - 1]
-        return directory["path"] as? String
+        return "Alarm Sounds"
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -285,46 +291,35 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88.0
+        return 66.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let soundDirectories = soundDirectories as [NSMutableDictionary]? {
-            return soundDirectories.count + 1
-        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        }
-        if let directory = soundDirectories[section - 1] as NSMutableDictionary? {
-            if let files = directory["files"] as! [String]? {
-                return files.count
-            }
-        }
-        return 0
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SoundCell", for: indexPath)
         cell.tintColor = AppColor.darkerYetTextColor
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "Clucking"
-            } else {
-                cell.textLabel?.text = "Crowing"
-            }
-        } else {
-            let directory = soundDirectories[indexPath.section - 1]
-            let files = directory["files"] as! [String]
-            cell.textLabel?.text = files[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "Clucking"
+        case 1:
+            cell.textLabel?.text = "Crowing"
+        case 2:
+            cell.textLabel?.text = "Default Notification Sound"
+        default:
+            cell.textLabel?.text = "Unknown Sound"
         }
-        if indexPath.section == section && indexPath.row == row {
+        if indexPath.row == row {
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
-
         return cell
     }
     
@@ -332,27 +327,23 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
-        let previousCell = tableView.cellForRow(at: IndexPath(row: row, section: section))
+        let previousCell = tableView.cellForRow(at: IndexPath(row: row, section: 0))
         previousCell?.accessoryType = .none
         row = indexPath.row
-        section = indexPath.section
-        if section == 0 {
-            if row == 0 {
-                if let url = Bundle.main.url(forResource: "Clucking", withExtension: "wav") as URL? {
-                    playSound(url: url)
-                }
-            } else {
-                if let url = Bundle.main.url(forResource: "Crowing", withExtension: "wav") as URL? {
-                    playSound(url: url)
-                }
+        switch indexPath.row {
+        case 0:
+            if let url = Bundle.main.url(forResource: "Clucking", withExtension: "wav") as URL? {
+                playSound(url: url)
             }
-        } else {
-            let directory = soundDirectories[section - 1]
-            let path = directory["path"] as! String
-            let files = directory["files"] as! [String]
-            let filePath: String = String(format: "%@/%@", path, files[row])
-            let url: URL = URL(fileURLWithPath: filePath)
-            playSound(url: url)
+        case 1:
+            if let url = Bundle.main.url(forResource: "Crowing", withExtension: "wav") as URL? {
+                playSound(url: url)
+            }
+        case 2:
+            // can't play the defaul user notification system sound
+            break
+        default:
+            break
         }
     }
     

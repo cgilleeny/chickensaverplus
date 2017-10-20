@@ -12,9 +12,9 @@ import CoreData
 
 public class Alarm: NSManagedObject {
     
-    class func create(_ moc: NSManagedObjectContext, offset: Int16, sound: String) throws  {
+    class func create(_ moc: NSManagedObjectContext, offset: NSNumber, sound: String) throws  {
         let entity = NSEntityDescription.insertNewObject(forEntityName: "Alarm", into: moc) as! Alarm
-        entity.offset = offset as NSNumber!
+        entity.offset = offset
         entity.sound = sound
         try moc.save()
     }

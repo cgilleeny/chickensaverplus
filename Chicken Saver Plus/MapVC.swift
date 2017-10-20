@@ -77,17 +77,8 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
 
         if let coopLocation = (UIApplication.shared.delegate as! AppDelegate).coopLocation as CLLocation? {
             addPin(location: coopLocation)
-            //focusMapView(location: coopLocation)
         } else if !CLLocationManager.locationServicesEnabled() || (CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .restricted) {
             performSegue(withIdentifier: "InfoAlertSegue", sender: self)
-            /*
-            let alert = UIAlertController(title: String(format: "Location Services %@", CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied ? "Denied" : "Restricted"), message: "Coop location required for sunset alerts.  Long press the map to drop a pin at your coop location.",
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
-            DispatchQueue.main.async(execute: {
-                self.present(alert, animated: true, completion: nil)
-            })
-            */
         } else if let location = (UIApplication.shared.delegate as! AppDelegate).location {
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = location
             addPin(location: location)
@@ -95,16 +86,13 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             //focusMapView(location: location)
             if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
                 (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
-            } /* else {
-                updateForRemoteNotifications()
-            } */
+            }
             
         } else {
             NotificationCenter.default.addObserver(self, selector: #selector(MapVC.locationUpdate(_:)), name:NSNotification.Name(rawValue: "LocationUpdate"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(MapVC.locationAuthorizationDenied(_:)), name:NSNotification.Name(rawValue: "LocationAuthorizationDenied"), object: nil)
             activityIndicator.startAnimating()
         }
-        //showInfo(infoText: "Yaba daba doo!")
     }
 
     override func didReceiveMemoryWarning() {
@@ -184,12 +172,9 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             
-            //registerForRemoteNotifications()
             if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
                 (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
-            } /* else {
-                registerForRemoteNotifications()
-            } */
+            }
 
             if let annotation = annotation as MKPointAnnotation? {
                 annotation.coordinate = coordinate
@@ -197,7 +182,6 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             } else {
                 addPin(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
             }
-            //focusMapView(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
             print("pressing here: \(point), coordinate: \(coordinate)")
         }
     }
@@ -212,13 +196,10 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: latitude, longitude: longitude)
 
             addPin(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
-            //focusMapView(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
-            //registerForRemoteNotifications()
+
             if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
                 (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
-            } /* else {
-                registerForRemoteNotifications()
-            } */
+            }
         }
     }
     
@@ -250,10 +231,13 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
     }
     
     @objc func sunsetAlertServerInitFailed(_ notification: Notification) {
-        if let error = notification.userInfo!["error"] as? NSError {
-            let alert = UIAlertController(title: NSLocalizedString("Sunset Alert Server Init Failed", comment: ""), message: error.localizedDescription,
+        if let errorMessage = notification.userInfo!["errorMessage"] as? String {
+            let alert = UIAlertController(title: NSLocalizedString("Device Initialization Failed", comment: ""), message: errorMessage,
                                           preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+                (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
+            }))
             DispatchQueue.main.async(execute: {
                 self.present(alert, animated: true, completion: nil)
             })
@@ -312,96 +296,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
                 completion: nil)
         })
     }
-    
-    /*
-    public func updateForRemoteNotifications() {
-        UNUserNotificationCenter.current().getNotificationSettings{ settings in
-            
-            let device = UIDevice()
-            let deviceName = device.name
-            let deviceModel = device.model
-            let systemVersion = device.systemVersion
-            let deviceId = device.identifierForVendor!.uuidString
-            
-            var appName: String?
-            
-            if let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String? {
-                appName = appDisplayName
-            } else {
-                appName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String?
-            }
-            
-            let appVersion = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String?
-            if let coopLocation = (UIApplication.shared.delegate as! AppDelegate).coopLocation as CLLocation?, let token = (UIApplication.shared.delegate as! AppDelegate).token as String? {
-                (UIApplication.shared.delegate as! AppDelegate).restfulServices.delegate = self
-                let postDictionary = ["appname":appName as AnyObject,
-                                      "appversion":appVersion as AnyObject,
-                                      "deviceuid":deviceId as AnyObject,
-                                      "devicename":deviceName as AnyObject,
-                                      "devicetoken":token as AnyObject,
-                                      "devicemodel":deviceModel as AnyObject,
-                                      "deviceversion":systemVersion as AnyObject,
-                                      "pushbadge":(settings.badgeSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushalert":(settings.alertSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "pushsound":(settings.soundSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                      "development":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
-                                      "latitude":coopLocation.coordinate.latitude as AnyObject,
-                                      "longitude":coopLocation.coordinate.longitude as AnyObject,
-                                      ]
-                print(postDictionary)
-                (UIApplication.shared.delegate as! AppDelegate).restfulServices.postJSON(servlet: "Register", withDictionary: postDictionary)
-            }
-        }
-    }
-    */
-    /*
-    func registerForRemoteNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(MapVC.remoteNotificationAuthorizationFailed(_:)), name:NSNotification.Name(rawValue: "RemoteNotificationRegistrationError"), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(NotificationOptionsVC.remoteNotificationAuthorizationFailed(_:)), name:NSNotification.Name(rawValue: "RemoteNotificationRegistrationError"), object: nil)
-        (UIApplication.shared.delegate as! AppDelegate).restfulServices.delegate = self
-        let center = UNUserNotificationCenter.current()
-        
-        let repeat5 = UNNotificationAction(identifier: "repeat5", title: String.localizedStringWithFormat("Repeat In %d Minutes", 5), options: [])
-        let repeat15 = UNNotificationAction(identifier: "repeat15", title: String.localizedStringWithFormat("Repeat In %d Minutes", 15), options: [])
-        let repeat30 = UNNotificationAction(identifier: "repeat30", title: String.localizedStringWithFormat("Repeat In %d Minutes", 30), options: [])
-        let category = UNNotificationCategory(identifier: "repeatCategory", actions: [repeat5, repeat15, repeat30], intentIdentifiers: [], options: [.customDismissAction])
-        
-        center.setNotificationCategories([category])
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                let alert = UIAlertController(title: NSLocalizedString("Remote Notification Authorization Error", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
-                DispatchQueue.main.async(execute: {
-                    self.present(alert, animated: true, completion: nil)
-                })
-            } else {
-                if !granted
-                {
-                    let alert = UIAlertController(title: NSLocalizedString("Remote Notification Authorization", comment: ""), message: NSLocalizedString("Not Granted", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
-                    DispatchQueue.main.async(execute: {
-                        self.present(alert, animated: true, completion: nil)
-                    })
-                }
-                else
-                {
-                    print("Allow")
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            }
-        }
-    }
-    */
-    /*
-    let regionRadius: CLLocationDistance = 1000
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    */
-    
+
     func addPin(location: CLLocation) {
         annotation = MKPointAnnotation()
         annotation!.coordinate = location.coordinate
@@ -538,7 +433,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88.0
+        return 66.0
     }
     
     func numberOfSections

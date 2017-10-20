@@ -228,43 +228,6 @@ class RestfulServices
             delegate?.didFinishPostWithError?(errorMessage: String.localizedStringWithFormat(NSLocalizedString("Error forming URL for servlet: %@.", comment: "URL forming error"), servlet))
         }
     }
-
-    /*
-    func get(_ request: String, completion: @escaping (_ result: [String: AnyObject]?, _ error: NSError?)->()) -> Void {
-        print(request)
-        if let url = URL(string: request.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!) {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            session = URLSession.shared
-            let task: URLSessionDataTask = session!.dataTask(with: URLRequest(url: url, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 500), completionHandler: { [weak self] (data: Data?, response:URLResponse?, err: NSError?) -> Void in
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                self?.session?.finishTasksAndInvalidate()
-                if err != nil {
-                    completion(nil, err)
-                }
-                do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-                    if let jsonDictionary = jsonObject as? [String: AnyObject] {
-                        if let status = jsonDictionary[ServerStatusConstants.status] as? [String: AnyObject] {
-                            if let isError = status[ServerStatusConstants.isError] as? Int {
-                                if isError == NetworkErrorConstants.noError {
-                                    completion(jsonDictionary, nil)
-                                }
-                                completion(nil, self?.processRestfulServiceError(isError, messageText: status[ServerStatusConstants.messageText] as? String ?? "Unknown Web message text"))
-                            }
-                            completion(nil, self?.processRestfulServiceError(NetworkErrorConstants.missingIsErrorInJsonResponse, messageText: "Invalid web response"))
-                        }
-                        completion(nil, self?.processRestfulServiceError(NetworkErrorConstants.missingStatusInJsonResponse, messageText: "Invalid web response"))
-                    }
-                    completion(nil, self?.processRestfulServiceError(NetworkErrorConstants.jsonObjectToDictionaryError, messageText: "Invalid web response"))
-                } catch let error as NSError {
-                    completion(nil, error)
-                }
-            } as! (Data?, URLResponse?, Error?) -> Void)
-            task.resume()
-        }
-    }
-    */
     
     func processRestfulServiceError(_ isError: Int, messageText: String) -> NSError {
         let userInfo: [AnyHashable: Any] =

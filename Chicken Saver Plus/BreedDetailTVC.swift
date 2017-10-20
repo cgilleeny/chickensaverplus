@@ -491,9 +491,12 @@ class VarietiesDataSource: NSObject,UITableViewDataSource,UITableViewDelegate {
     }
     
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 37.0
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 37.0
     }
     
     
@@ -517,13 +520,13 @@ class VarietiesDataSource: NSObject,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VarietyCell", for: indexPath)
-        cell.tintColor = AppColor.darkerYetTextColor
-        cell.textLabel?.tintColor = AppColor.darkerYetTextColor
+        //cell.tintColor = AppColor.darkerYetTextColor
+        //cell.textLabel?.tintColor = AppColor.darkerYetTextColor
         if let font = UIFont(name: "Noteworthy-Bold", size: 17.0) {
             cell.textLabel?.font = font
         }
         cell.textLabel?.text = varieties[indexPath.row].name!
-
+        cell.textLabel?.textColor = AppColor.darkestTextColor
         return cell
     }
 }
@@ -542,10 +545,12 @@ class FeaturesDataSource: NSObject,UITableViewDataSource,UITableViewDelegate {
         self.specialAttributes = specialAttributes
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 37.0
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 37.0
     }
     
     
@@ -570,11 +575,13 @@ class FeaturesDataSource: NSObject,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureCell", for: indexPath)
-        cell.tintColor = AppColor.darkerYetTextColor
+        //cell.tintColor = AppColor.darkerYetTextColor
         if let font = UIFont(name: "Noteworthy-Bold", size: 17.0) {
             cell.textLabel?.font = font
+            cell.textLabel?.textColor = AppColor.darkestTextColor
         }
         cell.textLabel?.text = specialAttributes[indexPath.row].attribute!
+        cell.textLabel?.textColor = AppColor.darkestTextColor
         return cell
     }
 }

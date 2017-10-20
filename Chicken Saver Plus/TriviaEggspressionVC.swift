@@ -13,10 +13,6 @@ class TriviaEggspressionVC: UIViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var backgroundView: UIImageView!
-    @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
-    @IBOutlet var tapGesture: UITapGestureRecognizer!
-    @IBOutlet var swipeLeftGesture: UISwipeGestureRecognizer!
-    @IBOutlet var swipeRightGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var nextBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var previousBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -44,62 +40,22 @@ class TriviaEggspressionVC: UIViewController {
     
     var triviaIndex: Int = 0
     var eggspressionIndex: Int = 0
-    //var statusBarOrientation = UIApplication.shared.statusBarOrientation
     var visibleTriviaView:TriviaView?
     var visibleEggspressionView: EggspressionView?
     var triviaViewHidden:TriviaView?
     var visibleEggView: UIImageView?
     let eggRatio: CGFloat = 1.5
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //NotificationCenter.default.addObserver(self, selector: #selector(TriviaEggspressionVC.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        
-        /*
-        eggspressionView.eggspression = eggspressions[eggspressionIndex]
-        eggspressionView.isHidden = true
-        
-        triviaView.trivia = triviaStrings[triviaIndex]
-        triviaView.isHidden = true
-        */
-        
-        //InitUI()
-        segmentedControl.tintColor = UIColor.white
-        tapGesture.addTarget(self, action: #selector(TriviaEggspressionVC.tapGestureHandler(_:)))
 
-        self.view.addGestureRecognizer(tapGesture)
-        
-        swipeRightGesture.addTarget(self, action: #selector(TriviaEggspressionVC.swipeRightGestureHandler(_:)))
-        self.view.addGestureRecognizer(swipeRightGesture)
-        
-        swipeLeftGesture.addTarget(self, action: #selector(TriviaEggspressionVC.swipeLeftGestureHandler(_:)))
-        self.view.addGestureRecognizer(swipeLeftGesture)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        //InitUI()
-        //print("viewWillLayoutSubviews() viewDidLayoutSubviews(), backgroundView.frame: \(backgroundView.frame), backgroundView.bounds: \(backgroundView.bounds), visibleTriviaView.frame: \(visibleTriviaView!.frame)")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //print("TriviaEggspressionVC viewDidLayoutSubviews(), backgroundView.frame: \(backgroundView.frame), backgroundView.bounds: \(backgroundView.bounds), visibleTriviaView.frame: \(visibleTriviaView!.frame)")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        //self.statusBarOrientation = UIApplication.shared.statusBarOrientation
-        
-        print("TriviaEggspressionVC viewWillAppear(), backgroundView.frame: \(backgroundView.frame), backgroundView.bounds: \(backgroundView.bounds)")
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         InitUI()
-        print("TriviaEggspressionVC viewDidAppear(), backgroundView.frame: \(backgroundView.frame), backgroundView.bounds: \(backgroundView.bounds), visibleTriviaView.frame: \(visibleTriviaView!.frame)")
+        //print("TriviaEggspressionVC viewDidAppear(), backgroundView.frame: \(backgroundView.frame), backgroundView.bounds: \(backgroundView.bounds), visibleTriviaView.frame: \(visibleTriviaView!.frame)")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,7 +69,6 @@ class TriviaEggspressionVC: UIViewController {
             print("Portrait")
         }
         
-
         // check if self is root view controller
         if self.tabBarController?.selectedViewController == self {
             print("vc is self")
@@ -142,44 +97,9 @@ class TriviaEggspressionVC: UIViewController {
                 }
             })
         }
-
-
-
     }
     
     // MARK: - Notification Handlers
-    
-    /*
-    @objc func rotated() {
-        print("rotated() - isLandscape: \(self.statusBarOrientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
-        if self.statusBarOrientation != UIApplication.shared.statusBarOrientation {
-           self.statusBarOrientation = UIApplication.shared.statusBarOrientation
-            DispatchQueue.main.async(execute: {
-                
-                if self.visibleTriviaView != nil {
-                    self.visibleTriviaView?.frame = self.backgroundView.frame
-                    self.visibleTriviaView?.setNeedsDisplay()
-                }
-                if let visibleEggView = self.visibleEggView as UIImageView? {
-                    if self.statusBarOrientation.isLandscape {
-                        let idealWidth = self.backgroundView.frame.height * self.eggRatio
-                        let widthInset = (self.backgroundView.frame.width - idealWidth)/2
-                        let eggRect = CGRect(x: self.backgroundView.frame.origin.x + widthInset, y: self.backgroundView.frame.origin.y, width: idealWidth, height: self.backgroundView.frame.height)
-                        print("landscape backgroundView.frame: \(self.backgroundView.frame), eggRect: \(eggRect))")
-                        visibleEggView.frame = eggRect
-                        visibleEggView.image = #imageLiteral(resourceName: "landscapeEgg")
-                    } else {
-                        visibleEggView.frame = self.backgroundView.frame
-                        self.visibleEggView?.image = #imageLiteral(resourceName: "egg")
-                    }
-                    self.visibleEggspressionView?.frame = self.insideEggRect()
-                    visibleEggView.setNeedsDisplay()
-                    self.visibleEggspressionView?.setNeedsDisplay()
-                }
-            })
-        }
-    }
-    */
     
     // MARK: - Control Handlers
     
@@ -218,28 +138,34 @@ class TriviaEggspressionVC: UIViewController {
     
     func InitUI() {
         if visibleTriviaView == nil {
+            segmentedControl.tintColor = UIColor.white
             print("UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
             visibleTriviaView = TriviaView(frame: backgroundView.frame)
-            //visibleTriviaView = TriviaView()
             visibleTriviaView?.backgroundColor = UIColor.clear
             visibleTriviaView?.trivia = triviaStrings[triviaIndex]
+            initGestures(toView: visibleTriviaView)
+            visibleTriviaView?.isUserInteractionEnabled = true
             self.view.addSubview(visibleTriviaView!)
         }
-/*
-        if visibleTriviaView == nil {
-            //visibleTriviaView = TriviaView(frame: backgroundView.frame)
-            visibleTriviaView = TriviaView()
-            visibleTriviaView?.backgroundColor = UIColor.clear
-            visibleTriviaView?.trivia = triviaStrings[triviaIndex]
-            self.view.addSubview(visibleTriviaView!)
-            visibleTriviaView?.translatesAutoresizingMaskIntoConstraints = false
-            
-            view.addConstraint(NSLayoutConstraint(item: visibleTriviaView!, attribute: .top, relatedBy: .equal, toItem: self.navigationBar, attribute: .bottom, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: visibleTriviaView!, attribute: .bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: .top, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: visibleTriviaView!, attribute: .leadingMargin, relatedBy: .equal, toItem: self.view, attribute: .leadingMargin, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: visibleTriviaView!, attribute: .trailingMargin, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1, constant: 0))
-        }
- */
+    }
+    
+    /*
+    func addGestures(toView: UIView?) {
+        toView?.addGestureRecognizer(tapGesture)
+        toView?.addGestureRecognizer(swipeRightGesture)
+        toView?.addGestureRecognizer(swipeLeftGesture)
+    }
+    */
+    
+    func initGestures(toView: UIView?) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TriviaEggspressionVC.tapGestureHandler(_:)))
+        toView?.addGestureRecognizer(tapGesture)
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(TriviaEggspressionVC.swipeRightGestureHandler(_:)))
+        swipeRightGesture.direction = .right
+        toView?.addGestureRecognizer(swipeRightGesture)
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(TriviaEggspressionVC.swipeLeftGestureHandler(_:)))
+        swipeLeftGesture.direction = .left
+        toView?.addGestureRecognizer(swipeLeftGesture)
     }
     
     func insideEggRect() -> CGRect {
@@ -251,23 +177,9 @@ class TriviaEggspressionVC: UIViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    /*
-    func insideEggRect() -> CGRect {
-        let width: CGFloat = backgroundView.bounds.width * 3.0/5.0
-        let height: CGFloat = backgroundView.bounds.height * 3.0/5.0
-        
-        let x = backgroundView.bounds.origin.x + ((backgroundView.bounds.width - width)/2.0)
-        let y = backgroundView.bounds.origin.y + ((backgroundView.bounds.height - height)/2.0)
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    */
-    
     func toggleControls(enabled: Bool) {
         previousBarButtonItem.isEnabled = enabled
         nextBarButtonItem.isEnabled = enabled
-        swipeLeftGesture.isEnabled = enabled
-        swipeRightGesture.isEnabled = enabled
-        tapGesture.isEnabled = enabled
         segmentedControl.isUserInteractionEnabled = enabled
     }
     
@@ -292,19 +204,22 @@ class TriviaEggspressionVC: UIViewController {
                     visibleEggView = UIImageView(frame: backgroundView.frame)
                     visibleEggView?.image = #imageLiteral(resourceName: "egg")
                 }
-                //visibleEggView?.image = UIImage(named: "egg")
-                visibleEggView?.setNeedsDisplay()
-                //let eggspressionViewFrame = CGRect(x: 100, y: 100, width: 100, height: 100)
                 print("backgroundView.frame: \(backgroundView.frame), insideEggRect(): \(insideEggRect())")
                 visibleEggspressionView = EggspressionView(frame: insideEggRect())
                 visibleEggspressionView?.backgroundColor = UIColor.clear
                 visibleEggspressionView?.eggspression = eggspressions[eggspressionIndex]
+                initGestures(toView: visibleEggspressionView)
                 visibleEggspressionView?.setNeedsDisplay()
+                
                 visibleEggView?.addSubview(visibleEggspressionView!)
+                initGestures(toView: visibleEggView)
+                visibleEggView?.isUserInteractionEnabled = true
+                visibleEggView?.setNeedsDisplay()
             }
             let options: UIViewAnimationOptions = [.transitionFlipFromLeft, .allowUserInteraction, .beginFromCurrentState]
 
             UIView.transition(from: self.visibleTriviaView!, to: self.visibleEggView!, duration: 0.5, options: options, completion: { _ in
+                //self.initGestures(toView: self.visibleEggspressionView)
                 self.toggleControls(enabled: true)
             })
         }
@@ -322,6 +237,8 @@ class TriviaEggspressionVC: UIViewController {
             }
             
             slideInView.trivia = triviaStrings[triviaIndex]
+            initGestures(toView: slideInView)
+            slideInView.isUserInteractionEnabled = true
             self.view.addSubview(slideInView)
             slideInView.setNeedsDisplay()
             UIView.animate(withDuration: 0.5, animations: {
@@ -342,11 +259,10 @@ class TriviaEggspressionVC: UIViewController {
             } else {
                 slideInView.image = #imageLiteral(resourceName: "egg")
             }
-            //slideInView.image = UIImage(named: "egg")
+
             slideInView.setNeedsDisplay()
             let slideInEggspressionView = EggspressionView(frame: insideEggRect())
             slideInEggspressionView.backgroundColor = UIColor.clear
-            //slideInEggspressionView.backgroundColor = UIColor.lightGray
             eggspressionIndex -= 1
             if eggspressionIndex < 0 {
                 eggspressionIndex = eggspressions.count - 1
@@ -355,9 +271,10 @@ class TriviaEggspressionVC: UIViewController {
             slideInEggspressionView.eggspression = eggspressions[eggspressionIndex]
             slideInEggspressionView.setNeedsDisplay()
             slideInView.addSubview(slideInEggspressionView)
-            self.view.addSubview(slideInView)
+            initGestures(toView: slideInView)
+            slideInView.isUserInteractionEnabled = true
+            view.addSubview(slideInView)
             
-           
             UIView.animate(withDuration: 0.5, animations: {
                  self.visibleEggView!.frame.origin.x += self.view.bounds.width
                  slideInView.frame.origin.x += self.view.bounds.width
@@ -384,6 +301,8 @@ class TriviaEggspressionVC: UIViewController {
             }
             
             slideInView.trivia = triviaStrings[triviaIndex]
+            initGestures(toView: slideInView)
+            slideInView.isUserInteractionEnabled = true
             self.view.addSubview(slideInView)
             slideInView.setNeedsDisplay()
             UIView.animate(withDuration: 0.5, animations: {
@@ -404,11 +323,11 @@ class TriviaEggspressionVC: UIViewController {
             } else {
                 slideInView.image = #imageLiteral(resourceName: "egg")
             }
-            //slideInView.image = UIImage(named: "egg")
+
             slideInView.setNeedsDisplay()
             let slideInEggspressionView = EggspressionView(frame: insideEggRect())
             slideInEggspressionView.backgroundColor = UIColor.clear
-            //slideInEggspressionView.backgroundColor = UIColor.lightGray
+
             eggspressionIndex += 1
             if eggspressionIndex >= eggspressions.count {
                 eggspressionIndex = 1
@@ -417,6 +336,8 @@ class TriviaEggspressionVC: UIViewController {
             slideInEggspressionView.eggspression = eggspressions[eggspressionIndex]
             slideInEggspressionView.setNeedsDisplay()
             slideInView.addSubview(slideInEggspressionView)
+            initGestures(toView: slideInView)
+            slideInView.isUserInteractionEnabled = true
             self.view.addSubview(slideInView)
             UIView.animate(withDuration: 0.5, animations: {
                 self.visibleEggView!.frame.origin.x -= self.view.bounds.width
