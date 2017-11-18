@@ -5,7 +5,7 @@
 //  Created by Caroline Gilleeny on 3/3/17.
 //  Copyright © 2017 Caroline Gilleeny. All rights reserved.
 //
-
+/*
 import UIKit
 import UserNotifications
 
@@ -14,7 +14,6 @@ class ManageNotificationsVC: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     var notificationRequests = [UNNotificationRequest]()
-
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -85,6 +84,7 @@ class ManageNotificationsVC: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationRequestCell", for: indexPath)
+        
         let notificationRequest = notificationRequests[indexPath.row]
         cell.textLabel?.text = notificationRequest.identifier
         cell.textLabel?.textColor = AppColor.darkestTextColor
@@ -127,3 +127,4 @@ class ManageNotificationsVC: UIViewController, UITableViewDelegate, UITableViewD
     */
 
 }
+ */

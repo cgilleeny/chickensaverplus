@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.490465"
+            timestampString = "532631801.453017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,12 +474,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.491446"
+            timestampString = "532631801.453093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -506,13 +506,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.492398"
+            timestampString = "532631801.453157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "390"
+            endingLineNumber = "390"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -522,12 +522,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.493319"
+            timestampString = "532631801.453205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
-            landmarkName = "buildNotificationRequest(sunset:daylength:sound:)"
+            startingLineNumber = "705"
+            endingLineNumber = "705"
+            landmarkName = "buildNotificationRequest(delay:sound:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -570,12 +570,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.494453"
+            timestampString = "532631801.453279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "579"
-            endingLineNumber = "579"
-            landmarkName = "buildNotificationRequest(sunset:daylength:sound:)"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "buildNotificationRequest(delay:sound:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -586,12 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.495916"
+            timestampString = "532631801.453327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
-            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/ManageNotificationsVC.swift"
-            timestampString = "529979670.336039"
+            timestampString = "532563579.973426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/ManageNotificationsVC.swift"
-            timestampString = "529979670.336105"
+            timestampString = "532563579.973475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/ManageNotificationsVC.swift"
-            timestampString = "529979670.336189"
+            timestampString = "532563579.973519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/Breed+CoreDataClass.swift"
-            timestampString = "515261035.499726"
+            timestampString = "532472295.730421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -906,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/Breed+CoreDataClass.swift"
-            timestampString = "515261035.499726"
+            timestampString = "532472295.730495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -922,155 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.044424"
+            timestampString = "532563579.973704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "longPressGestureHandler(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.045181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "longPressGestureHandler(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.045927"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.046667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "fetchedResultsController"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.047458"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
-            landmarkName = "tableView(_:heightForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.048322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
-            landmarkName = "numberOfSections(in:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.049111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.049912"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.050692"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "controllerDidChangeContent(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.05146"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "MapVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -1082,29 +938,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.052228"
+            timestampString = "532563579.973753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "tableView(_:commit:forRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.497899"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "MapVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1114,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.053035"
+            timestampString = "532563579.973798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1130,11 +970,137 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.053796"
+            timestampString = "532563579.973843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.973885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.973929"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.973973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
+            landmarkName = "tableView(_:editingStyleForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.974016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.974059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "660"
+            endingLineNumber = "660">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.974101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "655"
+            endingLineNumber = "655"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.974142"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chicken Saver Plus/MapVC.swift"
+            timestampString = "532563579.974184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "MapVC"
             landmarkType = "3">
             <Locations>
@@ -1208,13 +1174,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.499261"
+            timestampString = "532631801.453678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "getStoredDefaults()"
-            landmarkType = "7">
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1224,11 +1190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.50055"
+            timestampString = "532631801.453727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "storeDefaults()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1240,11 +1206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.501827"
+            timestampString = "532631801.453774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1256,13 +1222,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.054594"
+            timestampString = "532563579.975046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "longPressGestureHandler(_:)"
-            landmarkType = "7">
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "MapVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1272,11 +1238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.503106"
+            timestampString = "532631801.453835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -1352,11 +1318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.504492"
+            timestampString = "532631801.45391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
             landmarkName = "buildNotificationRequest(delay:sound:)"
             landmarkType = "7">
             <Locations>
@@ -1400,13 +1366,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.505589"
+            timestampString = "532631801.453957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "710"
+            endingLineNumber = "710"
+            landmarkName = "buildNotificationRequest(delay:sound:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1416,12 +1382,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.506677"
+            timestampString = "532631801.454004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "applicationWillTerminate(_:)"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "customizeAppearance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1448,11 +1414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.507695"
+            timestampString = "532631801.454064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1464,12 +1430,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.508778"
+            timestampString = "532631801.454111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1544,12 +1510,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/TriviaEggspressionVC.swift"
-            timestampString = "530042682.923687"
+            timestampString = "532631801.454186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "slideLeft()"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "slideRight()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1560,11 +1526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.338489"
+            timestampString = "532472295.734847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1576,11 +1542,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.338558"
+            timestampString = "532472295.734907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "AddAlarmVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -1592,11 +1558,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.338633"
+            timestampString = "532472295.734957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "AddAlarmVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -1608,11 +1574,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.338696"
+            timestampString = "532472295.735005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "AddAlarmVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -1624,11 +1590,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.33876"
+            timestampString = "532472295.735052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1640,11 +1606,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.338821"
+            timestampString = "532472295.735101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "saveBarButtonHandler(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1672,12 +1638,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.055677"
+            timestampString = "532563579.976945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "mapView(_:viewFor:)"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
+            landmarkName = "configureleftCalloutView(annotationView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1688,13 +1654,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.056485"
+            timestampString = "532563579.976998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "locationUpdate(_:)"
-            landmarkType = "7">
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "MapVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1704,12 +1670,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.057249"
+            timestampString = "532563579.977046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "mapView(_:annotationView:calloutAccessoryControlTapped:)"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
+            landmarkName = "adaptivePresentationStyle(for:traitCollection:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1800,7 +1766,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/Breed+CoreDataClass.swift"
-            timestampString = "515261035.499726"
+            timestampString = "532472295.736116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -1832,11 +1798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/TriviaEggspressionVC.swift"
-            timestampString = "530042682.924686"
+            timestampString = "532631801.454642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "viewWillTransition(to:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1848,13 +1814,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/MapVC.swift"
-            timestampString = "530161700.058147"
+            timestampString = "532563579.977171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "infoBarButtonHandler(_:)"
-            landmarkType = "7">
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "MapVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1864,11 +1830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.340351"
+            timestampString = "532472295.736501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1880,11 +1846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.510076"
+            timestampString = "532631801.454929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -1928,13 +1894,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.510999"
+            timestampString = "532631801.454982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
-            landmarkName = "buildNotificationRequest(sunset:daylength:sound:)"
-            landmarkType = "7">
+            startingLineNumber = "676"
+            endingLineNumber = "676"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1944,13 +1910,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.511973"
+            timestampString = "532631801.455029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
-            landmarkName = "buildNotificationRequest(sunset:daylength:sound:)"
-            landmarkType = "7">
+            startingLineNumber = "686"
+            endingLineNumber = "686"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1960,12 +1926,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.513071"
+            timestampString = "532631801.455076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "508"
-            endingLineNumber = "508"
-            landmarkName = "updateForRemoteNotifications()"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
+            landmarkName = "registerForRemoteNotifications()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2008,13 +1974,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/TriviaEggspressionVC.swift"
-            timestampString = "530042682.925432"
+            timestampString = "532631801.455123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "TriviaEggspressionVC"
-            landmarkType = "3">
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "slideLeft()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2024,11 +1990,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.514055"
+            timestampString = "532631801.455369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2036,27 +2002,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.514994"
+            timestampString = "532631801.455422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.176948"
+                  timestampString = "530464888.343415"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "346"
@@ -2064,14 +2030,14 @@
                   offsetFromSymbolStart = "700">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.178864"
+                  timestampString = "530464888.345358"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "347"
@@ -2084,27 +2050,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.515943"
+            timestampString = "532631801.455469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.184341"
+                  timestampString = "530464888.351975"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "354"
@@ -2112,14 +2078,14 @@
                   offsetFromSymbolStart = "1456">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #2 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.18683"
+                  timestampString = "530464888.35404"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "355"
@@ -2132,27 +2098,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.516862"
+            timestampString = "532631801.455516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.192866"
+                  timestampString = "530464888.392461"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -2160,14 +2126,14 @@
                   offsetFromSymbolStart = "2212">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #3 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Chicken_Saver_Plus.AppDelegate.userNotificationCenter(__ObjC.UNUserNotificationCenter, didReceive: __ObjC.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
                   moduleName = "Chicken Saver Plus"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/carolinegilleeny/Documents/developer/Chicken%20Saver%20Plus/Chicken%20Saver%20Plus/AppDelegate.swift"
-                  timestampString = "530161700.195302"
+                  timestampString = "530464888.395042"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "363"
@@ -2184,11 +2150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AddAlarmVC.swift"
-            timestampString = "529979670.341784"
+            timestampString = "532472295.736733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2200,11 +2166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chicken Saver Plus/AppDelegate.swift"
-            timestampString = "530158832.517759"
+            timestampString = "532631801.45558"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>

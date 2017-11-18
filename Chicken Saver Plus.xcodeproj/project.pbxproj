@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		B4FE724BA51EA16F52B8DA73 /* Pods_Chicken_Saver_Plus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66BEBC098C3F588E9213714 /* Pods_Chicken_Saver_Plus.framework */; };
 		E72267851E3A9B5B0000B93E /* peckingRooster.gif in Resources */ = {isa = PBXBuildFile; fileRef = E72267841E3A9B5B0000B93E /* peckingRooster.gif */; };
-		E7282FE71E32C77500633F49 /* skrzypce.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7282FE51E32C77500633F49 /* skrzypce.jpg */; };
-		E7282FE81E32C77500633F49 /* matrix.gif in Resources */ = {isa = PBXBuildFile; fileRef = E7282FE61E32C77500633F49 /* matrix.gif */; };
 		E7299E011E84D347009B01B2 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7299E001E84D347009B01B2 /* InfoVC.swift */; };
 		E729E9A81C5081A80076AA5A /* Alsacienne-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E729E92E1C5081A80076AA5A /* Alsacienne-2.jpg */; };
 		E729E9A91C5081A80076AA5A /* Alsacienne.JPG in Resources */ = {isa = PBXBuildFile; fileRef = E729E92F1C5081A80076AA5A /* Alsacienne.JPG */; };
@@ -135,7 +133,6 @@
 		E729EA241C509C140076AA5A /* BreedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E729EA231C509C140076AA5A /* BreedsVC.swift */; };
 		E7461C121E809F6100D64D2F /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7461C111E809F6100D64D2F /* MapVC.swift */; };
 		E7461C141E80A5A900D64D2F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7461C131E80A5A900D64D2F /* MapKit.framework */; };
-		E7461C161E81CC7B00D64D2F /* NotificationOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7461C151E81CC7B00D64D2F /* NotificationOptionsVC.swift */; };
 		E76684D41EB19DE900C80257 /* BreedDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76684D31EB19DE900C80257 /* BreedDetailTVC.swift */; };
 		E7699E5B1C484C0B00F93C63 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7699E5D1C484C0B00F93C63 /* Localization.strings */; };
 		E771E5961F904F9D00554913 /* expressions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E771E5951F904F9D00554913 /* expressions.plist */; };
@@ -201,8 +198,6 @@
 		2DD6A7903DCCF87CE0290919 /* Pods-Chicken Saver Plus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chicken Saver Plus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus.debug.xcconfig"; sourceTree = "<group>"; };
 		B66BEBC098C3F588E9213714 /* Pods_Chicken_Saver_Plus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chicken_Saver_Plus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72267841E3A9B5B0000B93E /* peckingRooster.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = peckingRooster.gif; sourceTree = "<group>"; };
-		E7282FE51E32C77500633F49 /* skrzypce.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skrzypce.jpg; sourceTree = "<group>"; };
-		E7282FE61E32C77500633F49 /* matrix.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = matrix.gif; sourceTree = "<group>"; };
 		E7299E001E84D347009B01B2 /* InfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		E729E92E1C5081A80076AA5A /* Alsacienne-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Alsacienne-2.jpg"; sourceTree = "<group>"; };
 		E729E92F1C5081A80076AA5A /* Alsacienne.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Alsacienne.JPG; sourceTree = "<group>"; };
@@ -327,7 +322,6 @@
 		E729EA231C509C140076AA5A /* BreedsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedsVC.swift; sourceTree = "<group>"; };
 		E7461C111E809F6100D64D2F /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		E7461C131E80A5A900D64D2F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E7461C151E81CC7B00D64D2F /* NotificationOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationOptionsVC.swift; sourceTree = "<group>"; };
 		E76684D31EB19DE900C80257 /* BreedDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedDetailTVC.swift; sourceTree = "<group>"; };
 		E7699E5C1C484C0B00F93C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localization.strings; sourceTree = "<group>"; };
 		E7699E5E1C484C0E00F93C63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
@@ -415,22 +409,12 @@
 			name = gifs;
 			sourceTree = "<group>";
 		};
-		E7282FE41E32C6E300633F49 /* NotificationAttachments */ = {
-			isa = PBXGroup;
-			children = (
-				E7282FE51E32C77500633F49 /* skrzypce.jpg */,
-				E7282FE61E32C77500633F49 /* matrix.gif */,
-			);
-			name = NotificationAttachments;
-			sourceTree = "<group>";
-		};
 		E729EA221C509BE10076AA5A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E76684D31EB19DE900C80257 /* BreedDetailTVC.swift */,
 				E7D3B4E81E908CBD00029436 /* TriviaEggspressionVC.swift */,
 				E7FFB24E1E87907B00C957ED /* AddAlarmVC.swift */,
-				E7461C151E81CC7B00D64D2F /* NotificationOptionsVC.swift */,
 				E729EA231C509C140076AA5A /* BreedsVC.swift */,
 				E7DFB0DE1E6A2C75006E7A92 /* ManageNotificationsVC.swift */,
 				E7461C111E809F6100D64D2F /* MapVC.swift */,
@@ -477,7 +461,6 @@
 				E7CA23C91E3478A9003D2780 /* Chicken Saver Plus.entitlements */,
 				E798FFD41C7E358600420975 /* Network */,
 				E72267831E3A9B230000B93E /* gifs */,
-				E7282FE41E32C6E300633F49 /* NotificationAttachments */,
 				E7C630661E302CAE00CBC45B /* Sounds */,
 				E7C6305D1E2EE42800CBC45B /* Helpers */,
 				E729EA221C509BE10076AA5A /* Controllers */,
@@ -871,11 +854,9 @@
 				E729EA1D1C5081A80076AA5A /* White_Silkie.jpg in Resources */,
 				E729E9CF1C5081A80076AA5A /* Cornish.jpg in Resources */,
 				E729E9D31C5081A80076AA5A /* Czech_Brindle_Chicken_Hens.jpg in Resources */,
-				E7282FE81E32C77500633F49 /* matrix.gif in Resources */,
 				E729E9E51C5081A80076AA5A /* Jaerhorn.jpg in Resources */,
 				E729EA1C1C5081A80076AA5A /* Welsummer.jpg in Resources */,
 				E729E9D11C5081A80076AA5A /* Crevecoeur.jpg in Resources */,
-				E7282FE71E32C77500633F49 /* skrzypce.jpg in Resources */,
 				E729E9B61C5081A80076AA5A /* Australian_Langshan_Pair.jpg in Resources */,
 				E729E9E61C5081A80076AA5A /* Japanese Bantam.jpg in Resources */,
 				E729E9D21C5081A80076AA5A /* Cubalaya.jpg in Resources */,
@@ -939,9 +920,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -954,13 +938,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chicken Saver Plus-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -975,7 +962,6 @@
 				E7FF01A01E775CBD00440BCF /* Breed+CoreDataClass.swift in Sources */,
 				E7D3B4E91E908CBD00029436 /* TriviaEggspressionVC.swift in Sources */,
 				E7B01DC51C4359B10078F099 /* Chicken_Saver_Plus.xcdatamodeld in Sources */,
-				E7461C161E81CC7B00D64D2F /* NotificationOptionsVC.swift in Sources */,
 				E7BEA44F1E98382600E27E6F /* InfoAlertVC.swift in Sources */,
 				E7FF01B01E78F1E000440BCF /* SpecialAttribute+CoreDataClass.swift in Sources */,
 				E7D3B4E31E8D72C800029436 /* EggspressionView.swift in Sources */,
@@ -1153,7 +1139,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Caroline Gilleeny (7ZXQ3SUK9T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1174,7 +1160,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chicken Saver Plus/Chicken Saver Plus.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -16,7 +16,8 @@ class TriviaEggspressionVC: UIViewController {
     @IBOutlet weak var nextBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var previousBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
-
+    @IBOutlet var mainView: UIView!
+    
     
     lazy var eggspressions: [String] = {
         var strings = [String]()
@@ -137,6 +138,7 @@ class TriviaEggspressionVC: UIViewController {
     // MARK: - Utilities
     
     func InitUI() {
+        mainView.backgroundColor = AppColor.darkTextColor
         if visibleTriviaView == nil {
             segmentedControl.tintColor = UIColor.white
             print("UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")

@@ -9,11 +9,13 @@
 import UIKit
 import CoreLocation
 import MapKit
-//import AVFoundation
+import Alamofire
 import UserNotifications
 import CoreData
 
-class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*, RestfulServicesDelegate */, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+
+
+class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, AlamofireDelegate, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var longPressGestureRecognizer: UILongPressGestureRecognizer!
@@ -24,8 +26,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
     var moc: NSManagedObjectContext!
     var annotation: MKPointAnnotation?
     var coopAnnotation: CoopAnnotation?
-    //var coopLocation: CLLocation? = (UIApplication.shared.delegate as! AppDelegate).coopLocation
-    //var player: AVAudioPlayer?
+    weak var delegate:AlamofireDelegate?
     var infoBarButtonItem: UIBarButtonItem?
     var showDetailCallout: Bool = false
     
@@ -41,7 +42,8 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             try frc.performFetch()
             let sectionInfo = frc.sections![0]
             if sectionInfo.numberOfObjects == 0 {
-                try Alarm.create(self.moc, offset: 0, sound: "Clucking")
+                self.insertAlarm(parameters: ["offset": 0, "sound":"Clucking.wav", "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
+                //try Alarm.create(self.moc, offset: 0, sound: "Clucking")
             }
         } catch {
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
@@ -56,8 +58,6 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
         return frc
     }()
     
-    
-
     // MARK: - View Controller Lifecycle Overrides
     
     override func viewDidLoad() {
@@ -82,8 +82,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
         } else if let location = (UIApplication.shared.delegate as! AppDelegate).location {
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = location
             addPin(location: location)
-
-            //focusMapView(location: location)
+            
             if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
                 (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
             }
@@ -107,6 +106,11 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             print("Portrait")
         }
         mapView.setNeedsDisplay()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("MapVC viewWillDisappear")
     }
     
     deinit {
@@ -171,7 +175,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
             let point = sender.location(in: mapView)
             let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            
+
             if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
                 (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
             }
@@ -244,33 +248,137 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
         }
     }
     
-    /*
-    // MARK: - Restfull Services Protocol
+    // MARK: - Utilities
     
-    func didFinishPostWithError(errorMessage:String) {
-        print(errorMessage)
-        let alert = UIAlertController(title: NSLocalizedString("Sunset Alert Server Initialization Failed", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
-        DispatchQueue.main.async(execute: {
-            self.present(alert, animated: true, completion: nil)
-        })
+    
+    public func insertAlarm(parameters: [String: Any]) {
+        let path = String(format: "%@Alarms", host)
+        activityIndicator.startAnimating()
+        Alamofire.request(URL(string: path)!,
+                          method: .post, parameters: parameters)
+            .responseJSON { response in
+                self.activityIndicator.stopAnimating()
+                guard response.result.isSuccess else {
+                    self.didFinishInsertAlarmWithError(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"), parameters: parameters)
+                    return
+                }
+                
+                guard let responseJSON = response.result.value as? [String: Any] else {
+                    self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""), parameters: parameters)
+                    return
+                }
+                
+                if let status = responseJSON["status"] as? String {
+                    if status != "OK" {
+                        print(status)
+                        self.didFinishInsertAlarmWithError(errorMessage: status, parameters: parameters)
+                    } else {
+                        if let result = responseJSON["result"] as? Int {
+                            do {
+                                try Alarm.create(self.moc, id: result, dictionary: parameters)
+                            } catch {
+                                self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Error creating CoreData Alarm entity", comment: ""), parameters: parameters)
+                            }
+                        } else {
+                            self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Missing 'result' in json response: ", comment: ""), parameters: parameters)
+                        }
+                    }
+                } else {
+                    self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""), parameters: parameters)
+                }
+        }
     }
     
     
-    func didFinishPost(jsonData:Dictionary<String, AnyObject>?) {
-        if let jsonData = jsonData {
-            if let status = jsonData["status"] as? String {
-                if status == "OK" {
-                    print("OK")
+    public func updateAlarm(parameters: [String: Any], alarm: Alarm) {
+        let path = String(format: "%@Alarms", host)
+        activityIndicator.startAnimating()
+        Alamofire.request(URL(string: path)!,
+                          method: .post, parameters: parameters)
+            .responseJSON { response in
+                self.activityIndicator.stopAnimating()
+                guard response.result.isSuccess else {
+                    self.didFinishUpdateAlarmWithError(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"), parameters: parameters, alarm: alarm)
+                    return
+                }
+                
+                guard let responseJSON = response.result.value as? [String: Any] else {
+                    self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""), parameters: parameters, alarm: alarm)
+                    return
+                }
+                
+                if let status = responseJSON["status"] as? String {
+                    if status != "OK" {
+                        print(status)
+                        self.didFinishUpdateAlarmWithError(errorMessage: status, parameters: parameters, alarm: alarm)
+                    } else {
+                        if let _ = responseJSON["result"] as? Int {
+                            do {
+                                self.moc.delete(alarm)
+                                try self.moc.save()
+                                self.tableView.reloadData()
+                            } catch {
+                                self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Error updating CoreData Alarm entity", comment: ""), parameters: parameters, alarm: alarm)
+                            }
+                        } else {
+                            self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Missing 'result' in json response: ", comment: ""), parameters: parameters, alarm: alarm)
+                        }
+                    }
                 } else {
-                    print(status)
+                    self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""), parameters: parameters, alarm: alarm)
+                }
+        }
+    }
+
+    /*
+    func buildNotificationRequest(sunset: DateComponents, daylength: Int, sound: String) -> UNNotificationRequest {
+        let content = UNMutableNotificationContent()
+        content.title = NSLocalizedString("Sunset Alert", comment: "")
+        if let sunsetDate = Calendar.current.date(from: sunset) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh:mm a"
+            content.subtitle = String.localizedStringWithFormat("Today's sunset: %@", dateFormatter.string(from: sunsetDate))
+        }
+        content.body = NSLocalizedString("Time to put the chickens away!", comment: "")
+        
+        switch sound {
+        case "Clucking":
+            content.sound = UNNotificationSound(named: "Clucking.wav")
+        case "Crowing":
+            content.sound = UNNotificationSound(named: "Crowing.wav")
+        default:
+            content.sound = UNNotificationSound.default()
+        }
+        
+        content.categoryIdentifier = "repeatCategory"
+        
+        
+        if daylength < (12*60*60) { // 60 secs per min, 60 minutes per hour 12 hours minimum daylight for laying
+            if let image = UIImage(named: "light.jpg"), let url = image.saveToURL(name: "light") {
+                let attachment = try? UNNotificationAttachment(identifier: "imageIdentifier",
+                                                               url: url,
+                                                               options: [:])
+                if let attachment = attachment {
+                    content.attachments.append(attachment)
+                }
+            }
+        } else {
+            if let image = UIImage(named: "fox.jpg"), let url = image.saveToURL(name: "fox") {
+                let attachment = try? UNNotificationAttachment(identifier: "imageIdentifier",
+                                                               url: url,
+                                                               options: [:])
+                
+                if let attachment = attachment {
+                    content.attachments.append(attachment)
                 }
             }
         }
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: sunset, repeats: false)
+        print(String(format: "sunsetRequest-%02d:%02d", sunset.hour!, sunset.minute!))
+        return UNNotificationRequest(identifier: String(format: "sunsetRequest-%02d:%02d", sunset.hour!, sunset.minute!), content: content, trigger: trigger)
     }
     */
-    
-    // MARK: - Utilities
     
     func showInfo(infoText: String, anchorView: UIView) {
         let storyboard : UIStoryboard = UIStoryboard(
@@ -304,12 +412,46 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
         mapView.addAnnotation(annotation!)
         mapView.showAnnotations([annotation!], animated: true)
         mapView.selectedAnnotations = [annotation!]
+        focusMapView(location: location)
     }
     
     func focusMapView(location: CLLocation) {
-        let span = MKCoordinateSpanMake(0.1, 0.1)
+        let span = MKCoordinateSpanMake(0.2, 0.2)
         let region = MKCoordinateRegionMake(location.coordinate, span)
         mapView.region = region
+    }
+    
+    
+    // MARK: - Alamofire Protocol
+    
+    func didFinishGetWithError(errorMessage:String) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["errorMessage": errorMessage])
+    }
+    
+    func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
+        let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+        print("Contact management")
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+            self.insertAlarm(parameters: parameters)
+        }))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    func didFinishUpdateAlarmWithError(errorMessage:String, parameters: [String:Any], alarm: Alarm) {
+        let alert = UIAlertController(title: NSLocalizedString("Error Deleting Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+        print("Contact management")
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+            self.updateAlarm(parameters: parameters, alarm: alarm)
+        }))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
     }
     
     // MARK: - MapView Delegate
@@ -317,6 +459,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         print("mapView viewFor annotation")
+
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
         
         if annotationView == nil{
@@ -463,7 +606,16 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
         } else {
             cell.textLabel?.text = String.localizedStringWithFormat("Alarm: %d Minutes After Sunset", alarm.offset!.int16Value)
         }
-        cell.detailTextLabel?.text = String.localizedStringWithFormat("Sound: %@", alarm.sound ?? "")
+        if let sound = alarm.sound {
+            switch sound {
+            case "Clucking.wav":
+                cell.detailTextLabel?.text = NSLocalizedString("Sound: Clucking", comment: "")
+            case "Crowing.wav":
+                cell.detailTextLabel?.text = NSLocalizedString("Sound: Crowing", comment: "")
+            default:
+                cell.detailTextLabel?.text = NSLocalizedString("Sound: Default Notification Sound", comment: "")
+            }
+        }
         return cell
     }
     
@@ -474,21 +626,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             let alarm = fetchedResultsController.object(at: indexPath)
-            //let identifier = String(format: "sunsetRequest-%d:%d", sunset.hour!, sunset.minute!)
-            //UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-            moc.delete(alarm)
-            do {
-                try moc.save()
-            } catch {
-                let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
-                let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController delete Alarm failed: %@", comment: "fetchedResultsController.performFetch error"), "\(error)")
-                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:nil))
-                DispatchQueue.main.async(execute: {
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-            tableView.reloadData()
+            self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":Int(alarm.offset!), "sound":alarm.sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"inactive"], alarm: alarm)
         }
     }
     

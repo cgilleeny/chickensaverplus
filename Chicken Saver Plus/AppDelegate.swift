@@ -50,12 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var location: CLLocation?
     var coopLocation: CLLocation?
     var token: String?
-    var skip: Int = 4
-    //var restfulServices = RestfulServices()
+    var uuid:String?
     weak var delegate:AlamofireDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         registerDefaultsFromSettingsBundle()
+        print("UserDefaults.standard.string(forKey: SettingsConstants.pushMode): \(String(describing: UserDefaults.standard.string(forKey: SettingsConstants.pushMode)))")
         getStoredDefaults()
 
         if coopLocation == nil  {
@@ -74,9 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 print("tabBarViewControllers.count: \(tabBarViewControllers.count)")
                 for vc in tabBarViewControllers {
                     if let navigationController = vc as? UINavigationController {
-                        /*if let viewController = navigationController.topViewController as? ViewController {
-                            viewController.moc = managedObjectContext
-                        } else*/ if let breedsVC = navigationController.topViewController as? BreedsVC {
+                        if let breedsVC = navigationController.topViewController as? BreedsVC {
                             breedsVC.moc = managedObjectContext
                         } else if let mapVC = navigationController.topViewController as? MapVC {
                             mapVC.moc = managedObjectContext
@@ -117,11 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         self.saveContext()
     }
 
-    
     // MARK: - Register Defaults
     
     func customizeAppearance() {
         //UINavigationBar.appearance().barTintColor = AppColor.darkerTextColor
+        
         UINavigationBar.appearance().barTintColor = AppColor.darkTextColor
         UINavigationBar.appearance().isTranslucent = false;
 
@@ -164,6 +162,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         
         token = standardUserDefaults.string(forKey: "token")
+        
+        uuid = standardUserDefaults.string(forKey: "uuid")
     }
     
     
@@ -177,6 +177,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if let token = token as String? {
             standardUserDefaults.set(token, forKey: "token")
+        }
+
+        if let uuid = uuid {
+            standardUserDefaults.set(uuid, forKey: "uuid")
         }
     }
     
@@ -287,14 +291,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
-            if skip > 0 {
-                skip -= 1
-                print("skipped longitude: \(locations[locations.count - 1].coordinate.longitude), latitude: \(locations[locations.count - 1].coordinate.latitude)")
-            } else {
-                location = locations[locations.count - 1]
-                print("longitude: \(location!.coordinate.longitude), latitude: \(location!.coordinate.latitude)")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationUpdate"), object: nil, userInfo:["latitude": location!.coordinate.latitude, "longitude": location!.coordinate.longitude])
-            }
+            location = locations[locations.count - 1]
+            print("longitude: \(location!.coordinate.longitude), latitude: \(location!.coordinate.latitude)")
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationUpdate"), object: nil, userInfo:["latitude": location!.coordinate.latitude, "longitude": location!.coordinate.longitude])
         }
     }
     
@@ -334,6 +333,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if notification.request.identifier .contains("sunsetRequest") {
             completionHandler([.alert, .sound])
+        } else if notification.request.identifier .contains("midnightRequest") {
+            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+            completionHandler([])
         } else {
             completionHandler([])
         }
@@ -371,12 +373,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else {
             completionHandler()
         }
-        
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //print(userInfo[AnyHashable("aps")] ?? "default value")
-
+        completionHandler(UIBackgroundFetchResult.newData)
+        
+        /*
         if let sunset = userInfo["sunset"] as? String, let daylength = userInfo["daylength"] as? Int {
             submitAckPush()
             print(daylength)
@@ -427,6 +429,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 })
             }
         }
+        */
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -444,7 +447,93 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NotificationCenter.default.post(name: Notification.Name(rawValue: "RemoteNotificationRegistrationError"), object: nil, userInfo:["error": error])
     }
     
+    /*
+    func getSunInfo(date: Date, location: CLLocation) {
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        print(path)
+        self.delegate = self
+        Alamofire.request(URL(string: path)!, method: .get)
+            .responseJSON { response in
+                //self.activityIndicator.stopAnimating()
+                guard response.result.isSuccess else {
+                    //self.delegate?.didFinishGetWithError!(errorMessage: String(describing: response.result.error))
+                    self.delegate?.didFinishGetWithError!(errorMessage: response.result.error?.localizedDescription ?? String(describing: response.result.error))
+                    return
+                }
+                
+                guard let responseJSON = response.result.value as? [String: Any] else {
+                    self.delegate?.didFinishGetWithError!(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""))
+                    return
+                }
+                
+                if let results = responseJSON["results"] as? [String: Any], let sunsetStr = results["sunset"] as? String, let dayLength = results["day_length"] as? Int {
+                    //let dateFormatter = DateFormatter()
+                    let shortSunsetStr = String(sunsetStr.characters.dropLast(6))
+                    let conformingSunsetStr = shortSunsetStr.replacingOccurrences(of: "T", with: " ")
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.timeZone = TimeZone(identifier: "GMT")
+                    if let sunset = dateFormatter.date(from: conformingSunsetStr) {
+                        print("results: \(results), sunsetStr: \(String(sunsetStr.characters.dropLast(6))), dayLength: \(dayLength), sunset: \(String(describing: sunset))")
+                        self.createLocalNotifications(sunset: sunset, daylength: dayLength)
+                    }
+                } else {
+                    self.delegate?.didFinishGetWithError!(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""))
+                }
+        }
+    }
+    */
     
+    /*
+    func createLocalNotifications(sunset: Date, daylength: Int) {
+        //let moc = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+        //let delegate = UIApplication.shared.delegate as! AppDelegate
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+            let notificationRequests = requests.filter() {$0.identifier .contains("sunsetRequest")}
+            var identifiers = [String]()
+            for notificationRequest in notificationRequests {
+                identifiers.append(notificationRequest.identifier)
+            }
+            if identifiers.count > 0 {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+            }
+            print(sunset)
+            print(sunset.description)
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: sunset)
+            print("dateComponents - year: \(String(describing: dateComponents.year)), month: \(String(describing: dateComponents.month)), day: \(String(describing: dateComponents.day)), hour: \(String(describing: dateComponents.hour)), minute: \(String(describing: dateComponents.minute))")
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "offset", ascending: true)]
+            
+            do {
+                
+                if let alarms = try self.managedObjectContext.fetch(fetchRequest) as? [Alarm] {
+                    for alarm in alarms {
+                        let alarmTime = sunset.addingTimeInterval(alarm.offset!.doubleValue * 60.0)
+                        print("alarm.offset!.doubleValue: \(alarm.offset!.doubleValue), alarmTime: \(alarmTime)")
+                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: alarmTime)
+                        
+                        UNUserNotificationCenter.current().add(self.buildNotificationRequest(sunset: dateComponents, daylength: daylength, sound: alarm.sound!)) { error in
+                            UNUserNotificationCenter.current().delegate = self
+                            if let error = error {
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: "BuildNotificationFailed"), object: nil, userInfo:["error": error])
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+                UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
+                //completionHandler(UIBackgroundFetchResult.noData)
+            } catch  {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "AlarmRetrievalFailed"), object: nil, userInfo:["error": error])
+                //completionHandler(UIBackgroundFetchResult.noData)
+                return
+            }
+        })
+    }
+    */
     
     public func updateForRemoteNotifications() {
         UNUserNotificationCenter.current().getNotificationSettings{ settings in
@@ -514,7 +603,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let repeat5 = UNNotificationAction(identifier: "repeat5", title: String.localizedStringWithFormat("Snooze for %d Minutes", 5), options: [])
         let repeat15 = UNNotificationAction(identifier: "repeat15", title: String.localizedStringWithFormat("Snooze for %d Minutes", 15), options: [])
         let repeat30 = UNNotificationAction(identifier: "repeat30", title: String.localizedStringWithFormat("Snooze for %d Minutes", 30), options: [])
-        let category = UNNotificationCategory(identifier: "repeatCategory", actions: [repeat5, repeat15, repeat30], intentIdentifiers: [], options: [.customDismissAction])
+        let category = UNNotificationCategory(identifier: "snooze.category", actions: [repeat5, repeat15, repeat30], intentIdentifiers: [], options: [.customDismissAction])
         
         center.setNotificationCategories([category])
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
@@ -535,6 +624,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
+    /*
+    func buildSunsetRefreshRequest() {
+        let tomorrow = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: Date(), options: [])!
+        let calendar = Calendar.current
+        var components = (calendar as NSCalendar).components([.year, .month, .day, .hour, .minute], from: tomorrow)
+        if let _ = components.hour, let _ = components.minute {
+            components.hour = 0
+            components.minute = 1
+            //let dayChange = calendar.date(from: components)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString("Midnight Request", comment: "")
+            UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "midnightRequest", content: content, trigger: trigger)) { error in
+                UNUserNotificationCenter.current().delegate = self
+                if let error = error {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "BuildNotificationFailed"), object: nil, userInfo:["error": error])
+                    print(error.localizedDescription)
+                }
+            }
+            //return UNNotificationRequest(identifier: "midnightRequest", content: content, trigger: trigger)
+        }
+    }
+    */
+    /*
     func buildNotificationRequest(sunset: DateComponents, daylength: Int, sound: String) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("Sunset Alert", comment: "")
@@ -582,14 +695,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print(String(format: "sunsetRequest-%02d:%02d", sunset.hour!, sunset.minute!))
         return UNNotificationRequest(identifier: String(format: "sunsetRequest-%02d:%02d", sunset.hour!, sunset.minute!), content: content, trigger: trigger)
     }
-    
+    */
     
     func buildNotificationRequest(delay: Double, sound: UNNotificationSound) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         content.title = NSLocalizedString("Sunset Repeat Alert", comment: "")
         content.body = NSLocalizedString("Past time to put the chickens away!", comment: "")
         content.sound = sound
-        content.categoryIdentifier = "repeatCategory"
+        content.categoryIdentifier = "snooze.category"
 
         if let url = Bundle.main.url(forResource: "peckingRooster", withExtension: "gif") {
             let attachment = try? UNNotificationAttachment(identifier: "imageIdentifier",
@@ -615,6 +728,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return UNNotificationRequest(identifier: "sunsetRequest", content: content, trigger: trigger)
     }
     
+    /*
     func submitAckPush() {
         if let token = self.token as String?, let identifierForVendor = UIDevice().identifierForVendor {
             let path = String(format: "%@PushStatus", host)
@@ -644,13 +758,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
     }
+    */
     
-    // MARK: - Restfull Services Protocol
+    // MARK: - Alamofire Protocol
     
+    func didFinishGetWithError(errorMessage:String) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["errorMessage": errorMessage])
+    }
+
     func didFinishPostWithError(errorMessage:String) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["errorMessage": errorMessage])
     }
 }
+
 
 extension UIImage {
     

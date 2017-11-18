@@ -9,12 +9,14 @@
 import UIKit
 import AVFoundation
 import CoreData
+import Alamofire
 import UserNotifications
 
 class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     ///The directories where we will first start looking for files as well as sub directories.
     //let rootSoundDirectories: [String] = ["/Library/Ringtones", "/System/Library/Audio/UISounds"]
@@ -130,9 +132,9 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 pickerView.selectRow(index, inComponent: 0, animated: true)
             }
             if let sound = alarm.sound as String? {
-                if sound == "Clucking" {
+                if sound == "Clucking.wav" {
                     row = 0
-                } else if sound == "Crowing" {
+                } else if sound == "Crowing.wav" {
                     row = 1
                 } else {
                     row = 2
@@ -162,29 +164,19 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
             switch row {
             case 0:
-                sound = "Clucking"
+                sound = "Clucking.wav"
             case 1:
-                sound = "Crowing"
+                sound = "Crowing.wav"
             case 2:
                 sound = "Default"
             default:
                 sound = "Default"
             }
-            
-            print("offsets[pickerView.selectedRow(inComponent: 0)]: \(offsets[pickerView.selectedRow(inComponent: 0)])")
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
-            if let alarms = try moc.fetch(fetchRequest) as? [Alarm] {
-                let offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber
-                if let alarmWithOffset = alarms.first(where: {$0.offset == offset}) {
-                    if let alarm = alarm as Alarm? {
-                        if alarmWithOffset === alarm {
-                            alarm.sound = sound
-                            try self.moc.save()
-                            DispatchQueue.main.async(execute: {
-                                _ = self.navigationController?.popViewController(animated: true)
-                            })
-                        }
-                    }
+            let offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber
+            if let alarmWithOffset = try Alarm.withOffset(moc, offset: Int(offset)) {
+                if let alarm = alarm as Alarm?, alarmWithOffset === alarm {
+                    self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                } else {
                     let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
                     let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
                     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -194,19 +186,60 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                     DispatchQueue.main.async(execute: {
                         self.present(alert, animated: true, completion: nil)
                     })
+                }
+            } else {
+                if let alarm = alarm as Alarm?,
+                    let id = alarm.id as NSNumber? {
+                    self.updateAlarm(parameters: ["id": Int(id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
                 } else {
-                    if let alarm = alarm as Alarm? {
-                        alarm.offset = offset
-                        alarm.sound = sound
-                        try self.moc.save()
-                    } else {
-                        try Alarm.create(self.moc, offset: offset, sound: sound!)
-                    }
-                    DispatchQueue.main.async(execute: {
-                        _ = self.navigationController?.popViewController(animated: true)
-                    })
+                    self.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
                 }
             }
+            
+            /*
+            print("offsets[pickerView.selectedRow(inComponent: 0)]: \(offsets[pickerView.selectedRow(inComponent: 0)])")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
+            
+            if let alarms = try moc.fetch(fetchRequest) as? [Alarm] {
+                
+                if let alarmWithOffset = alarms.first(where: {$0.offset == offset}) {
+                    if let alarm = alarm as Alarm? {
+                        if alarmWithOffset === alarm /*, let id = alarm.id as NSNumber?*/  {
+                            self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                            //alarm.sound = sound
+                            //try self.moc.save()
+                            //DispatchQueue.main.async(execute: {
+                            //    _ = self.navigationController?.popViewController(animated: true)
+                            //})
+                        } else {
+                            let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
+                            let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
+                            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:{ (UIAlertAction)in
+                                return
+                            }))
+                            DispatchQueue.main.async(execute: {
+                                self.present(alert, animated: true, completion: nil)
+                            })
+                        }
+                    }
+                } else {
+                    if let alarm = alarm as Alarm?,
+                        let id = alarm.id as NSNumber? {
+                        self.updateAlarm(parameters: ["id": Int(id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                        //alarm.offset = offset
+                        //alarm.sound = sound
+                        //try self.moc.save()
+                    } else {
+                        self.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
+                        //try Alarm.create(self.moc, offset: offset, sound: sound!)
+                    }
+                    //DispatchQueue.main.async(execute: {
+                    //    _ = self.navigationController?.popViewController(animated: true)
+                    //})
+                }
+            }
+            */
         } catch {
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
             let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController.performFetch for Alarm failed: %@", comment: "fetchedResultsController.performFetch error"), "\(error)")
@@ -228,6 +261,94 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     // MARK: - Utilities
     
     
+    public func insertAlarm(parameters: [String: Any]) {
+        let path = String(format: "%@Alarms", host)
+        activityIndicator.startAnimating()
+        Alamofire.request(URL(string: path)!,
+                          method: .post, parameters: parameters)
+            .responseJSON { response in
+                self.activityIndicator.stopAnimating()
+                guard response.result.isSuccess else {
+                    self.didFinishInsertAlarmWithError(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"), parameters: parameters)
+                    return
+                }
+                
+                guard let responseJSON = response.result.value as? [String: Any] else {
+                    self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""), parameters: parameters)
+                    return
+                }
+                
+                if let status = responseJSON["status"] as? String {
+                    if status != "OK" {
+                        print(status)
+                        self.didFinishInsertAlarmWithError(errorMessage: status, parameters: parameters)
+                    } else {
+                        if let result = responseJSON["result"] as? Int {
+                            do {
+                                try Alarm.create(self.moc, id: result, dictionary: parameters)
+                                DispatchQueue.main.async(execute: {
+                                    _ = self.navigationController?.popViewController(animated: true)
+                                })
+                            } catch {
+                                self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Error creating CoreData Alarm entity", comment: ""), parameters: parameters)
+                            }
+                        } else {
+                            self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Missing 'result' in json response: ", comment: ""), parameters: parameters)
+                        }
+                    }
+                } else {
+                    self.didFinishInsertAlarmWithError(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""), parameters: parameters)
+                }
+        }
+    }
+    
+    public func updateAlarm(parameters: [String: Any], alarm: Alarm) {
+        let path = String(format: "%@Alarms", host)
+        activityIndicator.startAnimating()
+        Alamofire.request(URL(string: path)!,
+                          method: .post, parameters: parameters)
+            .responseJSON { response in
+                self.activityIndicator.stopAnimating()
+                guard response.result.isSuccess else {
+                    self.didFinishUpdateAlarmWithError(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"), parameters: parameters, alarm: alarm)
+                    return
+                }
+                
+                guard let responseJSON = response.result.value as? [String: Any] else {
+                    self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""), parameters: parameters, alarm: alarm)
+                    return
+                }
+                
+                if let status = responseJSON["status"] as? String {
+                    if status != "OK" {
+                        print(status)
+                        self.didFinishUpdateAlarmWithError(errorMessage: status, parameters: parameters, alarm: alarm)
+                    } else {
+                        if let result = responseJSON["result"] as? Int {
+                            do {
+                                if let sound = parameters["sound"] as! String?,
+                                    let offset = parameters["offset"] as! Int? {
+                                    alarm.id = NSNumber(value: result)
+                                    alarm.offset = NSNumber(value: offset)
+                                    alarm.sound = sound
+                                    try self.moc.save()
+                                    DispatchQueue.main.async(execute: {
+                                        _ = self.navigationController?.popViewController(animated: true)
+                                    })
+                                }
+                            } catch {
+                                self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Error updating CoreData Alarm entity", comment: ""), parameters: parameters, alarm: alarm)
+                            }
+                        } else {
+                            self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Missing 'result' in json response: ", comment: ""), parameters: parameters, alarm: alarm)
+                        }
+                    }
+                } else {
+                    self.didFinishUpdateAlarmWithError(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""), parameters: parameters, alarm: alarm)
+                }
+        }
+    }
+    
     func playSound(url: URL) {
         do {
             
@@ -246,6 +367,34 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
 
+    // MARK: - Alamofire Protocol
+    
+    func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
+        let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+        print("Contact management")
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+            self.insertAlarm(parameters: parameters)
+        }))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    
+    func didFinishUpdateAlarmWithError(errorMessage:String, parameters: [String:Any], alarm: Alarm) {
+        let alert = UIAlertController(title: NSLocalizedString("Error Updating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+        print("Contact management")
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+            self.updateAlarm(parameters: parameters, alarm: alarm)
+        }))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
     
     // MARK: - pickerView
     

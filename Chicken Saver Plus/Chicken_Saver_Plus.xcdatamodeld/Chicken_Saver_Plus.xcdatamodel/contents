@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="16G29" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Alarm" representedClassName=".Alarm" syncable="YES">
         <attribute name="ext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="offset" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sound" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Breed" representedClassName=".Breed" syncable="YES">
         <attribute name="availability" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,7 +50,7 @@
         <relationship name="breed" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Breed" inverseName="varieties" inverseEntity="Breed" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-45" positionY="135" width="128" height="90"/>
+        <element name="Alarm" positionX="-45" positionY="135" width="128" height="120"/>
         <element name="Breed" positionX="-63" positionY="-18" width="128" height="345"/>
         <element name="Day" positionX="-36" positionY="135" width="128" height="135"/>
         <element name="EggColor" positionX="-36" positionY="144" width="128" height="75"/>
