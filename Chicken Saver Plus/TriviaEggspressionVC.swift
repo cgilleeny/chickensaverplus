@@ -104,7 +104,7 @@ class TriviaEggspressionVC: UIViewController {
     
     // MARK: - Control Handlers
     
-    func tapGestureHandler(_ sender:UITapGestureRecognizer) {
+  @objc func tapGestureHandler(_ sender:UITapGestureRecognizer) {
         if segmentedControl.selectedSegmentIndex == 0 {
             segmentedControl.selectedSegmentIndex = 1
         } else {
@@ -114,12 +114,12 @@ class TriviaEggspressionVC: UIViewController {
     }
     
     
-    func swipeRightGestureHandler(_ sender:UISwipeGestureRecognizer) {
+  @objc func swipeRightGestureHandler(_ sender:UISwipeGestureRecognizer) {
         slideRight()
     }
     
     
-    func swipeLeftGestureHandler(_ sender:UISwipeGestureRecognizer) {
+  @objc func swipeLeftGestureHandler(_ sender:UISwipeGestureRecognizer) {
         slideLeft()
     }
     
@@ -188,7 +188,7 @@ class TriviaEggspressionVC: UIViewController {
     func flip() {
         toggleControls(enabled: false)
         if segmentedControl.selectedSegmentIndex == 0 {
-            let options: UIViewAnimationOptions = [.transitionFlipFromLeft, .allowUserInteraction, .beginFromCurrentState]
+          let options: UIView.AnimationOptions = [.transitionFlipFromLeft, .allowUserInteraction, .beginFromCurrentState]
             UIView.transition(from: self.visibleEggView!, to: self.visibleTriviaView!, duration: 0.5, options: options, completion: { _ in
                 self.toggleControls(enabled: true)
             })
@@ -218,7 +218,7 @@ class TriviaEggspressionVC: UIViewController {
                 visibleEggView?.isUserInteractionEnabled = true
                 visibleEggView?.setNeedsDisplay()
             }
-            let options: UIViewAnimationOptions = [.transitionFlipFromLeft, .allowUserInteraction, .beginFromCurrentState]
+          let options: UIView.AnimationOptions = [.transitionFlipFromLeft, .allowUserInteraction, .beginFromCurrentState]
 
             UIView.transition(from: self.visibleTriviaView!, to: self.visibleEggView!, duration: 0.5, options: options, completion: { _ in
                 //self.initGestures(toView: self.visibleEggspressionView)

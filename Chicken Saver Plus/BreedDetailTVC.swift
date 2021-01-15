@@ -298,10 +298,10 @@ class EggCell: UITableViewCell {
             }
             
             let constraintWidth = NSLayoutConstraint (item: scrollContentView,
-                                                            attribute: NSLayoutAttribute.width,
-                                                            relatedBy: NSLayoutRelation.equal,
+                                                      attribute: NSLayoutConstraint.Attribute.width,
+                                                      relatedBy: NSLayoutConstraint.Relation.equal,
                                                             toItem: nil,
-                                                            attribute: NSLayoutAttribute.notAnAttribute,
+                                                            attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                             multiplier: 1,
                                                             constant: CGFloat(colors.count * 154))
             self.scrollView.addConstraint(constraintWidth)

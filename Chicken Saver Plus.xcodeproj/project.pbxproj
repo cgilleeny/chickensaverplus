@@ -138,7 +138,6 @@
 		E771E5961F904F9D00554913 /* expressions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E771E5951F904F9D00554913 /* expressions.plist */; };
 		E7734E4D1EAA704100154C9F /* EggColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7734E4C1EAA704100154C9F /* EggColorCell.swift */; };
 		E797D0A61EB28EC80072F0D8 /* EggColorBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797D0A51EB28EC80072F0D8 /* EggColorBox.swift */; };
-		E798FFD61C7E35B600420975 /* RestfulServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FFD51C7E35B600420975 /* RestfulServices.swift */; };
 		E798FFD91C7E453900420975 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798FFD71C7E453900420975 /* Day+CoreDataProperties.swift */; };
 		E7AC81821C44C0E40091D46C /* EggColor+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC817A1C44C0E40091D46C /* EggColor+CoreDataProperties.swift */; };
 		E7AC81841C44C0E40091D46C /* Breed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC817C1C44C0E40091D46C /* Breed+CoreDataProperties.swift */; };
@@ -168,7 +167,6 @@
 		E7D3B4E31E8D72C800029436 /* EggspressionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3B4E21E8D72C800029436 /* EggspressionView.swift */; };
 		E7D3B4E91E908CBD00029436 /* TriviaEggspressionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3B4E81E908CBD00029436 /* TriviaEggspressionVC.swift */; };
 		E7D93DB91C476EDA003075D1 /* NSManagedObject+Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D93DB81C476EDA003075D1 /* NSManagedObject+Relationship.swift */; };
-		E7DFB0DF1E6A2C75006E7A92 /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFB0DE1E6A2C75006E7A92 /* ManageNotificationsVC.swift */; };
 		E7DFB0E81E6CD8F9006E7A92 /* TriviaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFB0E71E6CD8F9006E7A92 /* TriviaView.swift */; };
 		E7FF019E1E77209700440BCF /* BreedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF019D1E77209700440BCF /* BreedDetailView.swift */; };
 		E7FF01A01E775CBD00440BCF /* Breed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FF019F1E775CBD00440BCF /* Breed+CoreDataClass.swift */; };
@@ -330,7 +328,6 @@
 		E771E5951F904F9D00554913 /* expressions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = expressions.plist; sourceTree = "<group>"; };
 		E7734E4C1EAA704100154C9F /* EggColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggColorCell.swift; sourceTree = "<group>"; };
 		E797D0A51EB28EC80072F0D8 /* EggColorBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggColorBox.swift; sourceTree = "<group>"; };
-		E798FFD51C7E35B600420975 /* RestfulServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestfulServices.swift; sourceTree = "<group>"; };
 		E798FFD71C7E453900420975 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7AC817A1C44C0E40091D46C /* EggColor+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EggColor+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7AC817C1C44C0E40091D46C /* Breed+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breed+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -363,7 +360,6 @@
 		E7D3B4E21E8D72C800029436 /* EggspressionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggspressionView.swift; sourceTree = "<group>"; };
 		E7D3B4E81E908CBD00029436 /* TriviaEggspressionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriviaEggspressionVC.swift; sourceTree = "<group>"; };
 		E7D93DB81C476EDA003075D1 /* NSManagedObject+Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Relationship.swift"; sourceTree = "<group>"; };
-		E7DFB0DE1E6A2C75006E7A92 /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
 		E7DFB0E71E6CD8F9006E7A92 /* TriviaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriviaView.swift; sourceTree = "<group>"; };
 		E7FF019D1E77209700440BCF /* BreedDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedDetailView.swift; sourceTree = "<group>"; };
 		E7FF019F1E775CBD00440BCF /* Breed+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breed+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -416,21 +412,11 @@
 				E7D3B4E81E908CBD00029436 /* TriviaEggspressionVC.swift */,
 				E7FFB24E1E87907B00C957ED /* AddAlarmVC.swift */,
 				E729EA231C509C140076AA5A /* BreedsVC.swift */,
-				E7DFB0DE1E6A2C75006E7A92 /* ManageNotificationsVC.swift */,
 				E7461C111E809F6100D64D2F /* MapVC.swift */,
 				E7299E001E84D347009B01B2 /* InfoVC.swift */,
 				E7BEA44E1E98382600E27E6F /* InfoAlertVC.swift */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		E798FFD41C7E358600420975 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				E798FFD51C7E35B600420975 /* RestfulServices.swift */,
-			);
-			name = Network;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		E7B01DB01C4359B10078F099 = {
@@ -459,7 +445,6 @@
 				E7CF93F81E71C4CD0097FA97 /* CustomCells */,
 				E7DFB0E61E6CD8C9006E7A92 /* CustomViews */,
 				E7CA23C91E3478A9003D2780 /* Chicken Saver Plus.entitlements */,
-				E798FFD41C7E358600420975 /* Network */,
 				E72267831E3A9B230000B93E /* gifs */,
 				E7C630661E302CAE00CBC45B /* Sounds */,
 				E7C6305D1E2EE42800CBC45B /* Helpers */,
@@ -700,7 +685,6 @@
 				E7B01DB71C4359B10078F099 /* Resources */,
 				E7282FE31E32C57700633F49 /* Embed App Extensions */,
 				3FBF2C37E41580CB37DAAE1D /* [CP] Embed Pods Frameworks */,
-				2780D90225C63A3002BF5500 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -718,7 +702,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Caroline Gilleeny";
 				TargetAttributes = {
 					E7B01DB81C4359B10078F099 = {
@@ -742,6 +726,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				fr,
@@ -899,28 +884,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2780D90225C63A3002BF5500 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3FBF2C37E41580CB37DAAE1D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -929,7 +899,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chicken Saver Plus/Pods-Chicken Saver Plus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8483341D7ADBBBC8A3591442 /* [CP] Check Pods Manifest.lock */ = {
@@ -968,7 +938,6 @@
 				E7BDA7CE1EB2E45700AE38E1 /* ReusableEggColorView.swift in Sources */,
 				E7FF01B11E78F1E000440BCF /* EggColor+CoreDataClass.swift in Sources */,
 				E7299E011E84D347009B01B2 /* InfoVC.swift in Sources */,
-				E7DFB0DF1E6A2C75006E7A92 /* ManageNotificationsVC.swift in Sources */,
 				E7FF019E1E77209700440BCF /* BreedDetailView.swift in Sources */,
 				E7AC81861C44C0E40091D46C /* SpecialAttribute+CoreDataProperties.swift in Sources */,
 				E7CF93FA1E71C4F40097FA97 /* BreedCell.swift in Sources */,
@@ -977,7 +946,6 @@
 				E7AC81881C44C0E40091D46C /* Variety+CoreDataProperties.swift in Sources */,
 				E798FFD91C7E453900420975 /* Day+CoreDataProperties.swift in Sources */,
 				E7B01DBD1C4359B10078F099 /* AppDelegate.swift in Sources */,
-				E798FFD61C7E35B600420975 /* RestfulServices.swift in Sources */,
 				E7BEA43A1E958CBB00E27E6F /* CoopAnnotation.swift in Sources */,
 				E7734E4D1EAA704100154C9F /* EggColorCell.swift in Sources */,
 				E7AC81841C44C0E40091D46C /* Breed+CoreDataProperties.swift in Sources */,
@@ -1039,12 +1007,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1094,12 +1064,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1136,18 +1108,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Chicken Saver Plus/Chicken Saver Plus.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Caroline Gilleeny (7ZXQ3SUK9T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1158,17 +1130,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Chicken Saver Plus/Chicken Saver Plus.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

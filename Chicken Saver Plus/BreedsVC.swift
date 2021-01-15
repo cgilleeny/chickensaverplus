@@ -130,8 +130,8 @@ class BreedsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
             print(error)
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
             let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController.performFetch for breed entities failed: %@", comment: "fetchedResultsController.performFetch error"), error.localizedDescription)
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:nil))
+          let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+          alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertAction.Style.cancel, handler:nil))
             DispatchQueue.main.async( execute:  {
                 self.present(alert, animated: true, completion: nil)
             })
@@ -219,8 +219,9 @@ class BreedsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         super.prepare(for: segue , sender: self)
         if segue.identifier == "BreedDetailTVCSegue" {
             let indexPath = self.tableView.indexPathForSelectedRow!
-            if let breedDetailTVC = segue.destination as? BreedDetailTVC {
-                breedDetailTVC.breed = fetchedResultsController.object(at: indexPath) as! Breed
+            if let breedDetailTVC = segue.destination as? BreedDetailTVC,
+              let breed = fetchedResultsController.object(at: indexPath) as? Breed {
+                breedDetailTVC.breed = breed
                 
             }
         }

@@ -32,7 +32,7 @@ class BreedDetailView: UIView {
         
         var attrString = NSAttributedString(
             string: breed.purpose ?? "N/A",
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 19.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 19.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowHeight*9/8)
@@ -43,7 +43,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: "Eggs",
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 17.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 17.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowHeight)
@@ -63,7 +63,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Size: %@", breed.eggSize ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         propertyRect = CGRect(x: propertyRect.origin.x + propertyRect.size.width, y: propertyRect.origin.y, width: propertyRect.size.width, height: propertyRect.size.height)
@@ -71,7 +71,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Productivity: %@", breed.productivity ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
@@ -84,14 +84,14 @@ class BreedDetailView: UIView {
                 
                 attrString = NSAttributedString(
                     string: "Colors",
-                    attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                    attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                 attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 for eggColor in eggColors {
                     rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
                     
                     attrString = NSAttributedString(
                         string: eggColor.color!,
-                        attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                        attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                     attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 }
             }
@@ -112,7 +112,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Personality: %@", breed.personality ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         propertyRect = CGRect(x: propertyRect.origin.x + propertyRect.size.width, y: propertyRect.origin.y, width: propertyRect.size.width, height: propertyRect.size.height)
@@ -120,7 +120,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Heat Tolerant: %@", breed.heatTolerant ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
@@ -136,7 +136,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Availability: %@", breed.availability ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         propertyRect = CGRect(x: propertyRect.origin.x + propertyRect.size.width, y: propertyRect.origin.y, width: propertyRect.size.width, height: propertyRect.size.height)
@@ -144,7 +144,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Cold Tolerant: %@", breed.coldTolerant ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
@@ -158,7 +158,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Brooding: %@", breed.brooding ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         propertyRect = CGRect(x: propertyRect.origin.x + propertyRect.size.width, y: propertyRect.origin.y, width: propertyRect.size.width, height: propertyRect.size.height)
@@ -166,7 +166,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Fancy: %@", breed.fancy ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
@@ -180,7 +180,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Maturing: %@", breed.maturing ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         propertyRect = CGRect(x: propertyRect.origin.x + propertyRect.size.width, y: propertyRect.origin.y, width: propertyRect.size.width, height: propertyRect.size.height)
@@ -188,7 +188,7 @@ class BreedDetailView: UIView {
         
         attrString = NSAttributedString(
             string: String(format: "Confinement Tolerant: %@", breed.confinement ?? "N/A"),
-            attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
         attrString.draw(in: propertyRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
         
         rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
@@ -203,14 +203,14 @@ class BreedDetailView: UIView {
                 
                 attrString = NSAttributedString(
                     string: "Varieties",
-                    attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                    attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                 attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 for variety in varieties {
                     rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
                     
                     attrString = NSAttributedString(
                         string: variety.name!,
-                        attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                        attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                     attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 }
             }
@@ -232,14 +232,14 @@ class BreedDetailView: UIView {
                 
                 attrString = NSAttributedString(
                     string: "Special Attributes",
-                    attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                    attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                 attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 for specialAttribute in specialAttributes {
                     rowRect = CGRect(x: rowRect.origin.x, y: rowRect.origin.y + rowRect.size.height, width: rowRect.size.width, height: rowRect.size.height)
                     
                     attrString = NSAttributedString(
                         string: specialAttribute.attribute!,
-                        attributes: [NSFontAttributeName:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSParagraphStyleAttributeName : p])
+                        attributes: [NSAttributedString.Key.font:UIFont(name: "Noteworthy-Bold", size: 15.0) ?? UIFont.systemFont(ofSize: 13.0), NSAttributedString.Key.paragraphStyle : p])
                     attrString.draw(in: rowRect.insetBy(dx: horizontalOffset, dy: verticalOffset))
                 }
             }

@@ -12,7 +12,8 @@ import CoreLocation
 import UserNotifications
 import Alamofire
 
-let host = "http://ec2-54-202-77-244.us-west-2.compute.amazonaws.com:8080/ChickenSaverService/"
+//let host = "http://ec2-54-202-77-244.us-west-2.compute.amazonaws.com:8080/ChickenSaverService/"
+let host = "http://chickensaver-env.eba-hxg5scrn.us-west-2.elasticbeanstalk.com/"
 
 @objc protocol AlamofireDelegate: class {
     @objc optional func didFinishGet(json:[String: Any]?)
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var uuid:String?
     weak var delegate:AlamofireDelegate?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerDefaultsFromSettingsBundle()
         print("UserDefaults.standard.string(forKey: SettingsConstants.pushMode): \(String(describing: UserDefaults.standard.string(forKey: SettingsConstants.pushMode)))")
         getStoredDefaults()
@@ -70,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         
         if let tabBarVC = self.window!.rootViewController as? UITabBarController {
-            if let tabBarViewControllers = tabBarVC.viewControllers as [UIViewController]! {
+          if let tabBarViewControllers = tabBarVC.viewControllers {
                 print("tabBarViewControllers.count: \(tabBarViewControllers.count)")
                 for vc in tabBarViewControllers {
                     if let navigationController = vc as? UINavigationController {
@@ -127,12 +128,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UINavigationBar.appearance().tintColor = UIColor.white
         if let font = UIFont(name: "Noteworthy-Bold", size: 17.0), let smallFont = UIFont(name: "Noteworthy-Bold", size: 10.0) {
             //UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName:AppColor.textBoxGrey]
-            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.white /*AppColor.darkerYetTextColor*/]
-            UISegmentedControl.appearance().setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)
-            UISegmentedControl.appearance().setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.selected)
+          UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white /*AppColor.darkerYetTextColor*/]
+          UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: UIControl.State.normal)
+          UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: UIControl.State.selected)
             UILabel.appearance().font = font
-            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: font], for: UIControlState.normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: smallFont, NSForegroundColorAttributeName : AppColor.darkestTextColor], for: UIControlState.normal)
+          UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: UIControl.State.normal)
+          UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: smallFont, NSAttributedString.Key.foregroundColor : AppColor.darkestTextColor], for: UIControl.State.normal)
             UITabBar.appearance().tintColor = AppColor.darkestTextColor
             UIButton.appearance().titleLabel?.font = font
         } else {
@@ -184,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    
+    /*
     func registerDefaultsFromSettingsBundle() {
         if let settingsBundleURL = Bundle.main.url(forResource: "Settings", withExtension: "bundle") {
             if let rootDict = NSDictionary(contentsOf: settingsBundleURL.appendingPathComponent("Root.plist")) {
@@ -214,8 +215,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
     }
-    
-
+ */
+  func registerDefaultsFromSettingsBundle() {
+    if let settingsBundleURL = Bundle.main.url(forResource: "Settings", withExtension: "bundle") {
+      if let rootDict = NSDictionary(contentsOf: settingsBundleURL.appendingPathComponent("Root.plist")) {
+        if let preferences = rootDict.object(forKey: "PreferenceSpecifiers") as? NSArray {
+          var defaultsToRegister = Dictionary<String,AnyObject>()
+          for prefSpecification in preferences {
+            if let itemDictionary = prefSpecification as? NSDictionary {
+              for key in itemDictionary.allKeys {
+                if let keyString = key as? String {
+                  print("keyString: \(keyString)")
+                }
+                if let keyString = key as? String,
+                  keyString == "Key",
+                  let keyValue = itemDictionary[keyString] as? String {
+                  for defaultValueKey in itemDictionary.allKeys {
+                    if let defaultValueKeyString = defaultValueKey as? String,
+                       defaultValueKeyString == "DefaultValue" {
+                      defaultsToRegister[keyValue] = itemDictionary[defaultValueKeyString] as AnyObject
+                    }
+                  }
+                }
+              }
+            }
+          }
+          UserDefaults.standard.register(defaults: defaultsToRegister)
+          UserDefaults.standard.synchronize()
+        }
+      }
+    }
+  }
     
     // MARK: - Core Data stack
 
@@ -334,10 +364,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if notification.request.identifier .contains("sunsetRequest") {
             completionHandler([.alert, .sound])
         } else if notification.request.identifier .contains("midnightRequest") {
-            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+          UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
             completionHandler([])
         } else {
-            completionHandler([])
+          if let sound = notification.request.content.sound {
+            print("notification.request.content.sound: \(sound)")
+          }
+          completionHandler([.alert, .sound])
         }
     }
     
@@ -352,35 +385,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
                 completionHandler()
             }
-        }
-        /*
-        if response.actionIdentifier == "repeat5" {
-            UNUserNotificationCenter.current().add(buildNotificationRequest(delay: 1, sound: response.notification.request.content.sound!)) { error in
-                UNUserNotificationCenter.current().delegate = self
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                completionHandler()
-            }
-        } else if response.actionIdentifier == "repeat15" {
-            UNUserNotificationCenter.current().add(buildNotificationRequest(delay: 5, sound: response.notification.request.content.sound!)) { error in
-                UNUserNotificationCenter.current().delegate = self
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                completionHandler()
-            }
-        } else if response.actionIdentifier == "repeat30" {
-            UNUserNotificationCenter.current().add(buildNotificationRequest(delay: 10, sound: response.notification.request.content.sound!)) { error in
-                UNUserNotificationCenter.current().delegate = self
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                completionHandler()
-            }
-        } else if response.actionIdentifier == "" {
-            completionHandler()
-        } */ else {
+        } else {
             completionHandler()
         }
     }
@@ -540,16 +545,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 extension UIImage {
     
     func saveToURL(name: String) -> URL? {
-        let imageData = UIImageJPEGRepresentation(self, 1.0)
-
-        let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+      let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+      if let imageData = self.jpegData(compressionQuality: 1.0),
+        urls.count > 0 {
+//          UIImageJPEGRepresentation(self, 1.0)
+//        let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         do {
-            let imageURL = documentsURL.appendingPathComponent("\(name).jpg")
-            _ = try imageData?.write(to: imageURL)
-            return imageURL
+          let imageURL = urls[0].appendingPathComponent("\(name).jpg")
+          _ = try imageData.write(to: imageURL)
+          return imageURL
         } catch {
-            return nil
+          return nil
         }
+      }
+      return nil
     }
 
 }

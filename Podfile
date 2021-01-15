@@ -6,5 +6,5 @@ target 'Chicken Saver Plus' do
   use_frameworks!
 
   # Pods for Chicken Saver Plus
-	pod 'Alamofire', '~> 4.2.0'
+	pod 'Alamofire', '~> 4.5.0'
 end

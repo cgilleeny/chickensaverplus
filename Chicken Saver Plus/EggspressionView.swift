@@ -37,7 +37,7 @@ class EggspressionView: UIView {
         //let font: UIFont = (fontName != nil) ? UIFont(name: fontName!, size: fontSize)! :  UIFont.systemFont(ofSize: fontSize)
         var attrString = NSAttributedString(
             string: eggspression,
-            attributes: [NSForegroundColorAttributeName : AppColor.darkTextColor, NSShadowAttributeName: shadow, NSFontAttributeName:(fontName != nil) ? UIFont(name: fontName!, size: fontSize)! :  UIFont.systemFont(ofSize: fontSize), NSParagraphStyleAttributeName : p])
+            attributes: [NSAttributedString.Key.foregroundColor : AppColor.darkTextColor, NSAttributedString.Key.shadow: shadow, NSAttributedString.Key.font:(fontName != nil) ? UIFont(name: fontName!, size: fontSize)! :  UIFont.systemFont(ofSize: fontSize), NSAttributedString.Key.paragraphStyle : p])
         
         var attrStringDynamicLength: CGFloat = 0.0
         
@@ -49,7 +49,7 @@ class EggspressionView: UIView {
             fontSize -= 2.0
             attrString = NSAttributedString(
                 string: eggspression,
-                attributes: [NSForegroundColorAttributeName : AppColor.darkTextColor, NSShadowAttributeName: shadow, NSFontAttributeName:(fontName != nil) ? UIFont(name: fontName!, size: fontSize)! :  UIFont.systemFont(ofSize: fontSize), NSParagraphStyleAttributeName : p])
+                attributes: [NSAttributedString.Key.foregroundColor : AppColor.darkTextColor, NSAttributedString.Key.shadow: shadow, NSAttributedString.Key.font:(fontName != nil) ? UIFont(name: fontName!, size: fontSize)! :  UIFont.systemFont(ofSize: fontSize), NSAttributedString.Key.paragraphStyle : p])
             attrStringDynamicLength = attrString.height(withConstrainedWidth: rect.width)
         }
         let actualRect = attrString.boundingRect(with: rect.size, options: .usesLineFragmentOrigin, context: nil)

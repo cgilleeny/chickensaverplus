@@ -173,14 +173,14 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 sound = "Default"
             }
             let offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber
-            if let alarmWithOffset = try Alarm.withOffset(moc, offset: Int(offset)) {
+          if let alarmWithOffset = try Alarm.withOffset(moc, offset: Int(truncating: offset)) {
                 if let alarm = alarm as Alarm?, alarmWithOffset === alarm {
-                    self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                  self.updateAlarm(parameters: ["id": Int(truncating: alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
                 } else {
                     let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
                     let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:{ (UIAlertAction)in
+                  let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                  alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertAction.Style.cancel, handler:{ (UIAlertAction)in
                         return
                     }))
                     DispatchQueue.main.async(execute: {
@@ -190,7 +190,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             } else {
                 if let alarm = alarm as Alarm?,
                     let id = alarm.id as NSNumber? {
-                    self.updateAlarm(parameters: ["id": Int(id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                  self.updateAlarm(parameters: ["id": Int(truncating: id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
                 } else {
                     self.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
                 }
@@ -243,8 +243,8 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         } catch {
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
             let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController.performFetch for Alarm failed: %@", comment: "fetchedResultsController.performFetch error"), "\(error)")
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:{ [weak self] (UIAlertAction)in
+          let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+          alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertAction.Style.cancel, handler:{ [weak self] (UIAlertAction)in
                 DispatchQueue.main.async(execute: {
                     _ = self?.navigationController?.popViewController(animated: true)
                 })
@@ -359,8 +359,8 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             player.play()
         } catch let error {
             print(error.localizedDescription)
-            let alert = UIAlertController(title: NSLocalizedString("Audio Player Error", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertActionStyle.cancel, handler:nil))
+          let alert = UIAlertController(title: NSLocalizedString("Audio Player Error", comment: ""), message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+          alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertAction.Style.cancel, handler:nil))
             DispatchQueue.main.async(execute: {
                 self.present(alert, animated: true, completion: nil)
             })
@@ -370,11 +370,11 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     // MARK: - Alamofire Protocol
     
     func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
-        let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+      let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
         print("Contact management")
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
             self.insertAlarm(parameters: parameters)
         }))
         DispatchQueue.main.async(execute: {
@@ -384,11 +384,11 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     
     func didFinishUpdateAlarmWithError(errorMessage:String, parameters: [String:Any], alarm: Alarm) {
-        let alert = UIAlertController(title: NSLocalizedString("Error Updating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.cancel, handler:nil))
+      let alert = UIAlertController(title: NSLocalizedString("Error Updating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
         print("Contact management")
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertActionStyle.default, handler:{(alert: UIAlertAction!) in
+      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
             self.updateAlarm(parameters: parameters, alarm: alarm)
         }))
         DispatchQueue.main.async(execute: {
@@ -411,17 +411,23 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label = view as! UILabel!
-        if label == nil {
-            label = UILabel()
-        }
-        if let font = UIFont(name: "Noteworthy-Bold", size: 19.0) {
-            label?.font = font
-        }
-        label?.textColor = AppColor.darkerYetTextColor
-        label?.text =  offsetStrings[row]
-        label?.textAlignment = .center
-        return label!
+      var label:UILabel?
+      if let thisView = view as? UILabel {
+        label = thisView
+      } else {
+        label = UILabel()
+      }
+//        var label = view as! UILabel!
+//        if label == nil {
+//            label = UILabel()
+//        }
+      if let font = UIFont(name: "Noteworthy-Bold", size: 19.0) {
+          label?.font = font
+      }
+      label?.textColor = AppColor.darkerYetTextColor
+      label?.text =  offsetStrings[row]
+      label?.textAlignment = .center
+      return label!
     }
     
     // MARK: - TableView
