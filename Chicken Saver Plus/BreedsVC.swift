@@ -32,7 +32,14 @@ class BreedsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         super.viewDidLoad()
         fetchBreeds()
         tableView.reloadData()
-        
+      searchBar.searchTextField.backgroundColor = UIColor.white
+      searchBar.searchTextField.textColor = AppColor.darkestTextColor
+      searchBar.tintColor = UIColor.white
+      if let font = UIFont(name: "Noteworthy-Bold", size: 21.0) {
+        searchBar.searchTextField.font = font
+      }
+      sortSegementControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: AppColor.darkestTextColor], for: .normal)
+      
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"EggColor")
         //let predicate = NSPredicate(format: "color == %@", color)
         //fetchRequest.predicate = predicate
@@ -151,7 +158,7 @@ class BreedsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         if sortSegementControl.selectedSegmentIndex == BreedSortConstants.alphabeticaly {
             return 0.0
         }
-        return 66.0
+        return 44.0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -163,7 +170,12 @@ class BreedsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = AppColor.paleGoldColor
+      let header = view as! UITableViewHeaderFooterView
+      header.contentView.backgroundColor = AppColor.paleGoldColor
+      header.textLabel?.textColor = AppColor.darkerYetTextColor
+      if let font = UIFont(name: "Noteworthy-Bold", size: 21.0) {
+        header.textLabel?.font = font
+      }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

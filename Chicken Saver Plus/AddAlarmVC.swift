@@ -12,81 +12,15 @@ import CoreData
 import Alamofire
 import UserNotifications
 
-class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource, AlarmUtilityDelegate {
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var saveBarButton: UIBarButtonItem!
+  
     
-    ///The directories where we will first start looking for files as well as sub directories.
-    //let rootSoundDirectories: [String] = ["/Library/Ringtones", "/System/Library/Audio/UISounds"]
-    
-    /*
-    lazy var soundDirectories: [NSMutableDictionary] = {
-        var directories = [NSMutableDictionary]()
-        for directory in self.rootSoundDirectories { //seed the directories we know about.
-            let newDirectory: NSMutableDictionary = [
-                "path" : directory,
-                "files" : []
-            ]
-            directories.append(newDirectory)
-            let directoryURL: URL = URL(fileURLWithPath: directory, isDirectory: true)
-            do {
-                var URLs: [URL]?
-                URLs = try FileManager().contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: [URLResourceKey.isDirectoryKey], options: FileManager.DirectoryEnumerationOptions())
-                for url in URLs! {
-                    //print("url.path: \(url.path)")
-
-                    if FileManager().fileExists(atPath: url.path) {
-                        let attribs: NSDictionary =
-                            try FileManager().attributesOfItem(atPath: url.path) as NSDictionary
-                        let fileType = attribs["NSFileType"] as! FileAttributeType
-                        
-                        //print("File type \(fileType)")
-                        if fileType == FileAttributeType.typeDirectory {
-                            let directory: String = "\(url.relativePath)"
-                            let newDirectory: NSMutableDictionary = [
-                                "path" : directory,
-                                "files" : []
-                            ]
-                            directories.append(newDirectory)
-                        }
-                    }
-                }
-            } catch {
-                print("failed")
-            }
-        }
-        
-        for directory in directories {
-            let directoryURL: URL = URL(fileURLWithPath: directory["path"] as! String, isDirectory: true)
-            do {
-                var URLs: [URL]?
-                URLs = try FileManager().contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: [URLResourceKey.isDirectoryKey], options: FileManager.DirectoryEnumerationOptions())
-                var soundPaths: [String] = []
-                for url in URLs! {
-                    if FileManager().fileExists(atPath: url.path) {
-                        let attribs: NSDictionary =
-                            try FileManager().attributesOfItem(atPath: url.path) as NSDictionary
-                        let fileType = attribs["NSFileType"] as! FileAttributeType
-                        
-                        //print("File type \(fileType)")
-                        if fileType == FileAttributeType.typeRegular {
-                            soundPaths.append(url.lastPathComponent)
-                        }
-                    }
-                }
-                directory["files"] = soundPaths
-            } catch {
-                print("failed")
-            }
-
-        }
-
-        return directories
-    }()
-    */
-    
+  var alarmUtility:AlarmUtility?
     
     var moc: NSManagedObjectContext!
     let offsetStrings = [NSLocalizedString("30 minutes before sunset", comment: ""),
@@ -101,7 +35,6 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                       NSLocalizedString("15 minutes after sunset", comment: ""),NSLocalizedString("20 minutes after sunset", comment: ""),NSLocalizedString("25 minutes after sunset", comment: ""),NSLocalizedString("30 minutes after sunset", comment: "")]
     
     let offsets: [Int16] = [-30, -25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30]
-    //var section: Int = 0
     var row: Int = 0
     var player: AVAudioPlayer?
     var alarm: Alarm?
@@ -110,18 +43,6 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*
-        for soundDirectory in soundDirectories {
-            let path = soundDirectory["path"] as! String
-            let files = soundDirectory["files"] as! [String]
-            print("path: \(path)")
-            for file in files {
-                print("file: \(file)")
-            }
-        }
-        */
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,6 +80,12 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     // MARK: - Control Handlers
     
     @IBAction func saveBarButtonHandler(_ sender: UIBarButtonItem) {
+      saveBarButton.isEnabled = false
+      alarmUtility = AlarmUtility()
+      alarmUtility?.activityIndicator = self.activityIndicator
+      alarmUtility?.delegate = self
+      alarmUtility?.parentVC = self
+      alarmUtility?.moc = self.moc
         do {
             var sound: String?
 
@@ -175,7 +102,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             let offset = offsets[pickerView.selectedRow(inComponent: 0)] as NSNumber
           if let alarmWithOffset = try Alarm.withOffset(moc, offset: Int(truncating: offset)) {
                 if let alarm = alarm as Alarm?, alarmWithOffset === alarm {
-                  self.updateAlarm(parameters: ["id": Int(truncating: alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                  self.alarmUtility?.updateAlarm(parameters: ["id": Int(truncating: alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
                 } else {
                     let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
                     let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
@@ -190,56 +117,11 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             } else {
                 if let alarm = alarm as Alarm?,
                     let id = alarm.id as NSNumber? {
-                  self.updateAlarm(parameters: ["id": Int(truncating: id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
+                  self.alarmUtility?.updateAlarm(parameters: ["id": Int(truncating: id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
                 } else {
-                    self.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
+                  self.alarmUtility?.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
                 }
             }
-            
-            /*
-            print("offsets[pickerView.selectedRow(inComponent: 0)]: \(offsets[pickerView.selectedRow(inComponent: 0)])")
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Alarm")
-            
-            if let alarms = try moc.fetch(fetchRequest) as? [Alarm] {
-                
-                if let alarmWithOffset = alarms.first(where: {$0.offset == offset}) {
-                    if let alarm = alarm as Alarm? {
-                        if alarmWithOffset === alarm /*, let id = alarm.id as NSNumber?*/  {
-                            self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
-                            //alarm.sound = sound
-                            //try self.moc.save()
-                            //DispatchQueue.main.async(execute: {
-                            //    _ = self.navigationController?.popViewController(animated: true)
-                            //})
-                        } else {
-                            let title = NSLocalizedString("Duplicate Alarm Creation Error", comment: "CoreData Error")
-                            let message = String.localizedStringWithFormat(NSLocalizedString("There is already an alarm set for: %@", comment: ""),  offsetStrings[pickerView.selectedRow(inComponent: 0)])
-                            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: "Close Button"), style: UIAlertActionStyle.cancel, handler:{ (UIAlertAction)in
-                                return
-                            }))
-                            DispatchQueue.main.async(execute: {
-                                self.present(alert, animated: true, completion: nil)
-                            })
-                        }
-                    }
-                } else {
-                    if let alarm = alarm as Alarm?,
-                        let id = alarm.id as NSNumber? {
-                        self.updateAlarm(parameters: ["id": Int(id), "offset":offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"], alarm: alarm)
-                        //alarm.offset = offset
-                        //alarm.sound = sound
-                        //try self.moc.save()
-                    } else {
-                        self.insertAlarm(parameters:  ["offset": offset, "sound":sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
-                        //try Alarm.create(self.moc, offset: offset, sound: sound!)
-                    }
-                    //DispatchQueue.main.async(execute: {
-                    //    _ = self.navigationController?.popViewController(animated: true)
-                    //})
-                }
-            }
-            */
         } catch {
             let title = NSLocalizedString("CoreData Error", comment: "CoreData Error")
             let message = String.localizedStringWithFormat(NSLocalizedString("fetchedResultsController.performFetch for Alarm failed: %@", comment: "fetchedResultsController.performFetch error"), "\(error)")
@@ -260,7 +142,7 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     // MARK: - Utilities
     
-    
+    /*
     public func insertAlarm(parameters: [String: Any]) {
         let path = String(format: "%@Alarms", host)
         activityIndicator.startAnimating()
@@ -348,7 +230,8 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 }
         }
     }
-    
+    */
+  
     func playSound(url: URL) {
         do {
             
@@ -367,8 +250,81 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
 
+  // MARK: - AlarmUtility Protocol
+  
+  func didFinishInsertAlarm(didInsert:Bool, id:Int, parameters:[String : Any]) {
+    if didInsert {
+      do {
+        try Alarm.create(self.moc, id: id, dictionary: parameters)
+      } catch {
+        self.saveBarButton.isEnabled = true
+        let alert = UIAlertController(title: NSLocalizedString("Error creating CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    }
+    DispatchQueue.main.async(execute: {
+        _ = self.navigationController?.popViewController(animated: true)
+    })
+  }
+  
+  func didFinishUpdateAlarm(didUpdate: Bool, id: Int, parameters:[String : Any], alarm:Alarm) {
+    if didUpdate {
+      do {
+        if let sound = parameters["sound"] as! String?,
+            let offset = parameters["offset"] as! Int? {
+            alarm.id = NSNumber(value: id)
+            alarm.offset = NSNumber(value: offset)
+            alarm.sound = sound
+            try self.moc.save()
+        }
+        DispatchQueue.main.async(execute: {
+            _ = self.navigationController?.popViewController(animated: true)
+        })
+      } catch {
+        self.saveBarButton.isEnabled = true
+        let alert = UIAlertController(title: NSLocalizedString("Error updating CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    } else {
+      DispatchQueue.main.async(execute: {
+          _ = self.navigationController?.popViewController(animated: true)
+      })
+    }
+  }
+  
+  
+  func didFinishDeleteAlarm(didDelete: Bool, alarm: Alarm) {
+    if didDelete {
+      do {
+        self.moc.delete(alarm)
+        try self.moc.save()
+        self.tableView.reloadData()
+        DispatchQueue.main.async(execute: {
+            _ = self.navigationController?.popViewController(animated: true)
+        })
+      } catch {
+        self.saveBarButton.isEnabled = true
+        let alert = UIAlertController(title: NSLocalizedString("Error deleting CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    } else {
+      DispatchQueue.main.async(execute: {
+          _ = self.navigationController?.popViewController(animated: true)
+      })
+    }
+  }
+  
     // MARK: - Alamofire Protocol
-    
+  /*
     func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
       let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
       alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
@@ -395,7 +351,8 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             self.present(alert, animated: true, completion: nil)
         })
     }
-    
+    */
+  
     // MARK: - pickerView
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -417,10 +374,6 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
       } else {
         label = UILabel()
       }
-//        var label = view as! UILabel!
-//        if label == nil {
-//            label = UILabel()
-//        }
       if let font = UIFont(name: "Noteworthy-Bold", size: 19.0) {
           label?.font = font
       }
@@ -433,17 +386,21 @@ class AddAlarmVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
- 
-        return 66.0
+        return 44.0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Alarm Sounds"
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = AppColor.paleGoldColor
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    let header = view as! UITableViewHeaderFooterView
+    header.contentView.backgroundColor = AppColor.paleGoldColor
+    header.textLabel?.textColor = AppColor.darkerYetTextColor
+    if let font = UIFont(name: "Noteworthy-Bold", size: 21.0) {
+      header.textLabel?.font = font
     }
+  }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66.0

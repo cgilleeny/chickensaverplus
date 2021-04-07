@@ -14,8 +14,7 @@ import UserNotifications
 import CoreData
 
 
-
-class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, AlamofireDelegate, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, AlamofireDelegate, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, AlarmUtilityDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var longPressGestureRecognizer: UILongPressGestureRecognizer!
@@ -25,10 +24,11 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
     let infoText = ["Coop location required for sunset alerts.  Long press the map to drop a pin within 25 miles of your coop location.", "Coop location required for sunset alerts.  Long press the map to drop a pin at a better location if the current location is off by more than 25 miles."]
     var moc: NSManagedObjectContext!
     var annotation: MKPointAnnotation?
-    var coopAnnotation: CoopAnnotation?
-    weak var delegate:AlamofireDelegate?
+//    var coopAnnotation: CoopAnnotation?
+
     var infoBarButtonItem: UIBarButtonItem?
     var showDetailCallout: Bool = false
+  var alarmUtility:AlarmUtility = AlarmUtility()
     
     
     lazy var fetchedResultsController : NSFetchedResultsController<Alarm> = {
@@ -41,13 +41,17 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
         do {
             try frc.performFetch()
             let sectionInfo = frc.sections![0]
+          alarmUtility.parentVC = self
+          alarmUtility.delegate = self
+          alarmUtility.moc = moc
+          alarmUtility.activityIndicator = activityIndicator
             if sectionInfo.numberOfObjects == 0 {
-                self.insertAlarm(parameters: ["offset": 0, "sound":"Clucking.wav", "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
-                //try Alarm.create(self.moc, offset: 0, sound: "Clucking")
+              alarmUtility.insertAlarm(parameters: ["offset": 0, "sound":"Clucking.wav", "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
+//                self.insertAlarm(parameters: ["offset": 0, "sound":"Clucking.wav", "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"active"])
             } else {
                 if let alarms = frc.fetchedObjects {
                     for alarm in alarms {
-                        self.updateAlarm(alarm: alarm)
+                      self.alarmUtility.updateAlarm(alarm: alarm)
                     }
                 }
             }
@@ -83,7 +87,8 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
 
         if let coopLocation = (UIApplication.shared.delegate as! AppDelegate).coopLocation as CLLocation? {
             addPin(location: coopLocation)
-        } else if !CLLocationManager.locationServicesEnabled() || (CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .restricted) {
+        } else if let locationAuthorization = (UIApplication.shared.delegate as! AppDelegate).locationAuthorization as CLAuthorizationStatus?,
+                  locationAuthorization == CLAuthorizationStatus.denied || locationAuthorization == CLAuthorizationStatus.restricted {
             performSegue(withIdentifier: "InfoAlertSegue", sender: self)
         } else if let location = (UIApplication.shared.delegate as! AppDelegate).location {
             (UIApplication.shared.delegate as! AppDelegate).coopLocation = location
@@ -199,18 +204,30 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
     // MARK: - Notification Handlers
     
     @objc func locationUpdate(_ notification: Notification) {
-        if let latitude = notification.userInfo!["latitude"] as? Double, let longitude = notification.userInfo!["longitude"] as? Double {
-            NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationUpdate"), object: nil)
-            NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil)
-            activityIndicator.stopAnimating()
-            (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: latitude, longitude: longitude)
-
-            addPin(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
-
-            if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
-                (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
-            }
+      if let location:CLLocation = (UIApplication.shared.delegate as! AppDelegate).location {
+        NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationUpdate"), object: nil)
+        NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil)
+        activityIndicator.stopAnimating()
+        (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
+            (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
         }
+        addPin(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
+      } else {
+        
+      }
+//        if let latitude = notification.userInfo!["latitude"] as? Double, let longitude = notification.userInfo!["longitude"] as? Double {
+//            NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationUpdate"), object: nil)
+//            NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil)
+//            activityIndicator.stopAnimating()
+//            (UIApplication.shared.delegate as! AppDelegate).coopLocation = CLLocation(latitude: latitude, longitude: longitude)
+//
+//            addPin(location: (UIApplication.shared.delegate as! AppDelegate).coopLocation!)
+//
+//            if let _ = (UIApplication.shared.delegate as! AppDelegate).token as String? {
+//                (UIApplication.shared.delegate as! AppDelegate).updateForRemoteNotifications()
+//            }
+//        }
     }
     
     
@@ -219,12 +236,26 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
             NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationUpdate"), object: nil)
             NotificationCenter.default.removeObserver(self, name:Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil)
             activityIndicator.stopAnimating()
-            let alert = UIAlertController(title: String(format: "Location Services %@", status == CLAuthorizationStatus.denied ? "Denied" : "Restricted"), message: "Coop location required for sunset alerts.  Long press the map to drop a pin at your coop location.",
-                                          preferredStyle: UIAlertController.Style.alert)
+          var reason: String = ""
+          switch status {
+            case CLAuthorizationStatus.notDetermined:
+              reason = "Not Determined"
+              break
+            case CLAuthorizationStatus.restricted:
+              reason = "Restriced"
+              break
+            case CLAuthorizationStatus.denied:
+              reason = "Denied"
+              break
+          default:
+            reason = "Not Determined"
+          }
+
+          let alert = UIAlertController(title: String(format: "Location Services %@", reason), message: "Coop location required for sunset alerts.  Long press the map to drop a pin at your coop location.", preferredStyle: UIAlertController.Style.alert)
           alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Button"), style: UIAlertAction.Style.cancel, handler:nil))
-            DispatchQueue.main.async(execute: {
-                self.present(alert, animated: true, completion: nil)
-            })
+          DispatchQueue.main.async(execute: {
+              self.present(alert, animated: true, completion: nil)
+          })
         }
     }
     
@@ -255,7 +286,7 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
     }
     
     // MARK: - Utilities
-    
+    /*
     public func insertAlarm(parameters: [String: Any]) {
         let path = String(format: "%@Alarms", host)
         activityIndicator.startAnimating()
@@ -365,7 +396,8 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
                 }
         }
     }
-    
+  */
+  
     func showInfo(infoText: String, anchorView: UIView) {
         let storyboard : UIStoryboard = UIStoryboard(
             name: "Main",
@@ -407,52 +439,108 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
         mapView.region = region
     }
     
-    
+  // MARK: - AlarmUtility Protocol
+  
+
+  func didFinishInsertAlarm(didInsert:Bool, id:Int, parameters:[String : Any]) {
+    if didInsert {
+      do {
+        try Alarm.create(self.moc, id: id, dictionary: parameters)
+      } catch {
+        let alert = UIAlertController(title: NSLocalizedString("Error creating CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    }
+
+  }
+  
+  func didFinishUpdateAlarm(didUpdate: Bool, id: Int, parameters:[String : Any], alarm:Alarm) {
+    if didUpdate {
+      do {
+        if let sound = parameters["sound"] as! String?,
+            let offset = parameters["offset"] as! Int? {
+            alarm.id = NSNumber(value: id)
+            alarm.offset = NSNumber(value: offset)
+            alarm.sound = sound
+            try self.moc.save()
+//            DispatchQueue.main.async(execute: {
+//                _ = self.navigationController?.popViewController(animated: true)
+//            })
+        }
+      } catch {
+        let alert = UIAlertController(title: NSLocalizedString("Error updating CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    }
+  }
+  
+  func didFinishDeleteAlarm(didDelete: Bool, alarm: Alarm) {
+    if didDelete {
+      do {
+        self.moc.delete(alarm)
+        try self.moc.save()
+        self.tableView.reloadData()
+      } catch {
+        let alert = UIAlertController(title: NSLocalizedString("Error deleting CoreData Alarm entity", comment: ""), message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+      }
+    }
+  }
+
     // MARK: - Alamofire Protocol
     
     func didFinishGetWithError(errorMessage:String) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "SunsetAlertServerInitFailed"), object: nil, userInfo:["errorMessage": errorMessage])
     }
     
-    func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
-      let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
-        print("Contact management")
-        
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
-            self.insertAlarm(parameters: parameters)
-        }))
-        DispatchQueue.main.async(execute: {
-            self.present(alert, animated: true, completion: nil)
-        })
-    }
+//    func didFinishInsertAlarmWithError(errorMessage:String, parameters: [String:Any]) {
+//      let alert = UIAlertController(title: NSLocalizedString("Error Creating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+//        print("Contact management")
+//
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
+//            self.insertAlarm(parameters: parameters)
+//        }))
+//        DispatchQueue.main.async(execute: {
+//            self.present(alert, animated: true, completion: nil)
+//        })
+//    }
     
-    func didFinishUpdateAlarmWithError(errorMessage:String, alarm: Alarm) {
-      let alert = UIAlertController(title: NSLocalizedString("Error Updating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
-        print("Contact management")
-        
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
-            self.updateAlarm(alarm: alarm)
-        }))
-        DispatchQueue.main.async(execute: {
-            self.present(alert, animated: true, completion: nil)
-        })
-    }
+//    func didFinishUpdateAlarmWithError(errorMessage:String, alarm: Alarm) {
+//      let alert = UIAlertController(title: NSLocalizedString("Error Updating Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+//        print("Contact management")
+//
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
+//            self.updateAlarm(alarm: alarm)
+//        }))
+//        DispatchQueue.main.async(execute: {
+//            self.present(alert, animated: true, completion: nil)
+//        })
+//    }
     
     
-    func didFinishDeleteAlarmWithError(errorMessage:String, alarm: Alarm) {
-      let alert = UIAlertController(title: NSLocalizedString("Error Deleting Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
-        print("Contact management")
-        
-      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
-            self.deleteAlarm(alarm: alarm)
-        }))
-        DispatchQueue.main.async(execute: {
-            self.present(alert, animated: true, completion: nil)
-        })
-    }
+//    func didFinishDeleteAlarmWithError(errorMessage:String, alarm: Alarm) {
+//      let alert = UIAlertController(title: NSLocalizedString("Error Deleting Server Alarm Record", comment: ""), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.cancel, handler:nil))
+//        print("Contact management")
+//
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: UIAlertAction.Style.default, handler:{(alert: UIAlertAction!) in
+//            self.deleteAlarm(alarm: alarm)
+//        }))
+//        DispatchQueue.main.async(execute: {
+//            self.present(alert, animated: true, completion: nil)
+//        })
+//    }
     
     // MARK: - MapView Delegate
     
@@ -567,9 +655,15 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
         return "Alarms"
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = AppColor.paleGoldColor
+
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    let header = view as! UITableViewHeaderFooterView
+    header.contentView.backgroundColor = AppColor.paleGoldColor
+    header.textLabel?.textColor = AppColor.darkerYetTextColor
+    if let font = UIFont(name: "Noteworthy-Bold", size: 21.0) {
+      header.textLabel?.font = font
     }
+  }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44.0
@@ -625,10 +719,10 @@ class MapVC: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, A
     
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == UITableViewCell.EditingStyle.delete {
-            let alarm = fetchedResultsController.object(at: indexPath)
-            self.deleteAlarm(alarm: alarm)
+      let alarm = fetchedResultsController.object(at: indexPath)
+      self.alarmUtility.deleteAlarm(alarm: alarm)
             //self.updateAlarm(parameters: ["id": Int(alarm.id!), "offset":Int(alarm.offset!), "sound":alarm.sound!, "deviceuid": UIDevice().identifierForVendor!.uuidString, "status":"inactive"], alarm: alarm)
-        }
+      }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -44,14 +44,34 @@ struct AppColor {
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate/*, RestfulServicesDelegate*/, AlamofireDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate, AlamofireDelegate {
 
     var window: UIWindow?
     var locationManager: CLLocationManager = CLLocationManager()
-    var location: CLLocation?
-    var coopLocation: CLLocation?
-    var token: String?
-    var uuid:String?
+  var location: CLLocation? {
+      didSet {
+          //print("longitude: \(location!.coordinate.longitude), latitude: \(location!.coordinate.latitude)")
+          NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationUpdate"), object: nil)
+      }
+  }
+  var locationAuthorization: CLAuthorizationStatus?
+  var coopLocation: CLLocation? {
+    didSet {
+      let standardUserDefaults = Foundation.UserDefaults.standard
+      standardUserDefaults.set(coopLocation!.coordinate.latitude, forKey: "latitude")
+      standardUserDefaults.set(coopLocation!.coordinate.longitude, forKey: "longitude")
+    }
+  }
+  var token: String? {
+    didSet {
+      Foundation.UserDefaults.standard.set(token, forKey: "token")
+    }
+  }
+  var uuid:String? {
+    didSet {
+      Foundation.UserDefaults.standard.set(uuid, forKey: "uuid")
+    }
+  }
     weak var delegate:AlamofireDelegate?
     
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -63,11 +83,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             
-            if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-            } else {
+//            if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
+//                locationManager.startUpdatingLocation()
+//            } else {
                 locationManager.requestWhenInUseAuthorization()
-            }
+//            }
         }
         
         if let tabBarVC = self.window!.rootViewController as? UITabBarController {
@@ -112,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
 
-        storeDefaults()
+//        storeDefaults()
         self.saveContext()
     }
 
@@ -168,22 +188,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     
-    func storeDefaults() {
-        let standardUserDefaults = Foundation.UserDefaults.standard
-        
-        if let coopLocation = coopLocation as CLLocation? {
-            standardUserDefaults.set(coopLocation.coordinate.latitude, forKey: "latitude")
-            standardUserDefaults.set(coopLocation.coordinate.longitude, forKey: "longitude")
-        }
-        
-        if let token = token as String? {
-            standardUserDefaults.set(token, forKey: "token")
-        }
-
-        if let uuid = uuid {
-            standardUserDefaults.set(uuid, forKey: "uuid")
-        }
-    }
+//    func storeDefaults() {
+//      print("Store defaults")
+//        let standardUserDefaults = Foundation.UserDefaults.standard
+//
+//        if let coopLocation = coopLocation as CLLocation? {
+//            standardUserDefaults.set(coopLocation.coordinate.latitude, forKey: "latitude")
+//            standardUserDefaults.set(coopLocation.coordinate.longitude, forKey: "longitude")
+//        }
+//
+//        if let token = token as String? {
+//            standardUserDefaults.set(token, forKey: "token")
+//        }
+//
+//        if let uuid = uuid {
+//            standardUserDefaults.set(uuid, forKey: "uuid")
+//        }
+//    }
     
     /*
     func registerDefaultsFromSettingsBundle() {
@@ -320,6 +341,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+      if locations.count > 0 {
+          let newLocation:CLLocation = locations[locations.count - 1]
+          if let oldLocation:CLLocation = location {
+              if newLocation.coordinate.longitude != oldLocation.coordinate.longitude || newLocation.coordinate.latitude != oldLocation.coordinate.latitude {
+                  location = newLocation
+              }
+          } else {
+              location = newLocation
+          }
+      }
         if locations.count > 0 {
             location = locations[locations.count - 1]
             print("longitude: \(location!.coordinate.longitude), latitude: \(location!.coordinate.latitude)")
@@ -327,50 +358,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    // "LocationAuthorizationDenied"
-    
-    // authorization status
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        //print("CLLocationManager: didChangeAuthorizationStatus")
-        switch status {
-        case CLAuthorizationStatus.restricted:
-            print("Restricted location status")
-            //locationStatus = status
-            locationManager.stopUpdatingLocation()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil, userInfo:["status": status])
-        case CLAuthorizationStatus.denied:
-            print("User denied location status")
-            //locationStatus = status
-            locationManager.stopUpdatingLocation()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil, userInfo:["status": status])
-        case CLAuthorizationStatus.notDetermined:
-            print("Not determined location status")
-        //locationStatus = status
-        case CLAuthorizationStatus.authorizedWhenInUse:
-            //print("Authorized when in use location status")
-            //locationStatus = status
-            // Start location services
-            locationManager.startUpdatingLocation()
-        case CLAuthorizationStatus.authorizedAlways:
-            print("Authorized always location status")
-            //locationStatus = status
-            locationManager.startUpdatingLocation()
-        }
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    locationAuthorization = manager.authorizationStatus
+    switch manager.authorizationStatus {
+      case CLAuthorizationStatus.restricted, CLAuthorizationStatus.denied:
+        print("Restricted or denied location authorization status: \(manager.authorizationStatus)")
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "LocationAuthorizationDenied"), object: nil, userInfo:["status": manager.authorizationStatus])
+        locationManager.stopUpdatingLocation()
+        break;
+      case CLAuthorizationStatus.authorizedWhenInUse, CLAuthorizationStatus.authorizedAlways:
+        locationManager.startUpdatingLocation()
+        break;
+      default:
+        break;
     }
+  }
 
     // MARK: - notification delegate
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if notification.request.identifier .contains("sunsetRequest") {
-            completionHandler([.alert, .sound])
-        } else if notification.request.identifier .contains("midnightRequest") {
-          UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-            completionHandler([])
+            completionHandler([.banner, .sound])
         } else {
           if let sound = notification.request.content.sound {
             print("notification.request.content.sound: \(sound)")
           }
-          completionHandler([.alert, .sound])
+          completionHandler([.banner, .sound])
         }
     }
     
@@ -417,7 +430,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let deviceModel = device.model
             let systemVersion = device.systemVersion
             let deviceId = device.identifierForVendor!.uuidString
-            
+
             var appName: String?
             
             if let appDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String? {
@@ -428,8 +441,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             let appVersion = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String?
             
-            if let token = self.token as String? {
-                let path = String(format: "%@Register", host)
+            if let token = self.token as String?,
+               let path = URL(string: String(format: "%@Register", host)) {
                 self.delegate = self
                 let parameters = ["appname":appName as AnyObject,
                                   "appversion":appVersion as AnyObject,
@@ -441,31 +454,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                   "pushbadge":(settings.badgeSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
                                   "pushalert":(settings.alertSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
                                   "pushsound":(settings.soundSetting == UNNotificationSetting.enabled ? "enabled" : "disabled") as AnyObject,
-                                  "development":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
+                                  "pushnetwork":UserDefaults.standard.string(forKey: SettingsConstants.pushMode) as AnyObject,
                                   "latitude": (self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.latitude) as AnyObject,
                                   "longitude":(self.coopLocation == nil ? 0 : self.coopLocation!.coordinate.longitude) as AnyObject]
                 print("parameters: \(parameters), host: \(host)")
-                Alamofire.request(URL(string: path)!,
+                Alamofire.request(path,
                                   method: .post, parameters: parameters)
                     .responseJSON { response in
-                        guard response.result.isSuccess else {
-                            self.delegate?.didFinishPostWithError!(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"))
-                            return
+                    guard response.result.isSuccess else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: String(describing: response.result.error?.localizedDescription ?? "Unknown Error"))
+                        return
+                    }
+                    
+                    guard let responseJSON = response.result.value as? [String: Any] else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""))
+                        return
+                    }
+                    
+                    if let status = responseJSON["status"] as? String {
+                        if status != "OK" {
+                            print(status)
+                            self.delegate?.didFinishPostWithError!(errorMessage: status)
                         }
-                        
-                        guard let responseJSON = response.result.value as? [String: Any] else {
-                            self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Error parsing JSON response", comment: ""))
-                            return
-                        }
-                        
-                        if let status = responseJSON["status"] as? String {
-                            if status != "OK" {
-                                print(status)
-                                self.delegate?.didFinishPostWithError!(errorMessage: status)
-                            }
-                        } else {
-                            self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""))
-                        }
+                    } else {
+                        self.delegate?.didFinishPostWithError!(errorMessage: NSLocalizedString("Missing 'status' in json response: ", comment: ""))
+                    }
                 }
             }
         }
@@ -514,16 +527,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             if let attachment = attachment {
                 content.attachments.append(attachment)
             }
-        } else if let image = UIImage(named: "fox.jpg"), let url = image.saveToURL(name: "fox") {
-            let attachment = try? UNNotificationAttachment(identifier: "imageIdentifier",
-                                                           url: url,
-                                                           options: [:])
-            
-            if let attachment = attachment {
-                content.attachments.append(attachment)
-            }
-            
-        }
+        } 
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60*delay), repeats: false)
         
@@ -542,24 +546,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 }
 
 
-extension UIImage {
-    
-    func saveToURL(name: String) -> URL? {
-      let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-      if let imageData = self.jpegData(compressionQuality: 1.0),
-        urls.count > 0 {
-//          UIImageJPEGRepresentation(self, 1.0)
-//        let documentsURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        do {
-          let imageURL = urls[0].appendingPathComponent("\(name).jpg")
-          _ = try imageData.write(to: imageURL)
-          return imageURL
-        } catch {
-          return nil
-        }
-      }
-      return nil
-    }
 
-}
 

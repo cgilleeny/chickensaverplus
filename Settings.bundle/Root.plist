@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>DefaultValue</key>
-			<string>Production</string>
+			<string>Sandbox</string>
 			<key>Values</key>
 			<array>
 				<string>Production</string>

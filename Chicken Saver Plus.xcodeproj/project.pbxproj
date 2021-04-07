@@ -135,6 +135,16 @@
 		E7461C141E80A5A900D64D2F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7461C131E80A5A900D64D2F /* MapKit.framework */; };
 		E76684D41EB19DE900C80257 /* BreedDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76684D31EB19DE900C80257 /* BreedDetailTVC.swift */; };
 		E7699E5B1C484C0B00F93C63 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7699E5D1C484C0B00F93C63 /* Localization.strings */; };
+		E76E392C25BA0C8A0050F3A7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E392B25BA0C8A0050F3A7 /* NotificationService.swift */; };
+		E76E393025BA0C8A0050F3A7 /* MyAppExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E76E392925BA0C8A0050F3A7 /* MyAppExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E76E393C25BA1E230050F3A7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E393B25BA1E230050F3A7 /* UIImageExtension.swift */; };
+		E76E394025BA1F040050F3A7 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E393F25BA1F040050F3A7 /* UIImageExtensions.swift */; };
+		E76E3D2125BF940B0050F3A7 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E3D1F25BF940B0050F3A7 /* ImageDownloader.swift */; };
+		E76E3D2225BF940B0050F3A7 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E3D2025BF940B0050F3A7 /* NetworkError.swift */; };
+		E76E3D2525BF94160050F3A7 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E3D1F25BF940B0050F3A7 /* ImageDownloader.swift */; };
+		E76E3D2825BF941A0050F3A7 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E3D2025BF940B0050F3A7 /* NetworkError.swift */; };
+		E76E3D2B25BF95290050F3A7 /* peckingRooster.gif in Resources */ = {isa = PBXBuildFile; fileRef = E72267841E3A9B5B0000B93E /* peckingRooster.gif */; };
+		E76E3D2E25BF953D0050F3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7B01DC61C4359B10078F099 /* Assets.xcassets */; };
 		E771E5961F904F9D00554913 /* expressions.plist in Resources */ = {isa = PBXBuildFile; fileRef = E771E5951F904F9D00554913 /* expressions.plist */; };
 		E7734E4D1EAA704100154C9F /* EggColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7734E4C1EAA704100154C9F /* EggColorCell.swift */; };
 		E797D0A61EB28EC80072F0D8 /* EggColorBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797D0A51EB28EC80072F0D8 /* EggColorBox.swift */; };
@@ -143,6 +153,7 @@
 		E7AC81841C44C0E40091D46C /* Breed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC817C1C44C0E40091D46C /* Breed+CoreDataProperties.swift */; };
 		E7AC81861C44C0E40091D46C /* SpecialAttribute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC817E1C44C0E40091D46C /* SpecialAttribute+CoreDataProperties.swift */; };
 		E7AC81881C44C0E40091D46C /* Variety+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AC81801C44C0E40091D46C /* Variety+CoreDataProperties.swift */; };
+		E7AF034D25D7310A00A81ADE /* AlarmUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF034C25D7310A00A81ADE /* AlarmUtility.swift */; };
 		E7B01DBD1C4359B10078F099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B01DBC1C4359B10078F099 /* AppDelegate.swift */; };
 		E7B01DC21C4359B10078F099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B01DC01C4359B10078F099 /* Main.storyboard */; };
 		E7B01DC51C4359B10078F099 /* Chicken_Saver_Plus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7B01DC31C4359B10078F099 /* Chicken_Saver_Plus.xcdatamodeld */; };
@@ -178,6 +189,16 @@
 		E7FFB24F1E87907B00C957ED /* AddAlarmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FFB24E1E87907B00C957ED /* AddAlarmVC.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E76E392E25BA0C8A0050F3A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7B01DB11C4359B10078F099 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E76E392825BA0C8A0050F3A7;
+			remoteInfo = MyAppExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		E7282FE31E32C57700633F49 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -185,6 +206,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				E76E393025BA0C8A0050F3A7 /* MyAppExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +347,13 @@
 		E7699E5E1C484C0E00F93C63 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
 		E7699E5F1C484C0F00F93C63 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localization.strings; sourceTree = "<group>"; };
 		E7699E611C4851AA00F93C63 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E76E392925BA0C8A0050F3A7 /* MyAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76E392B25BA0C8A0050F3A7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E76E392D25BA0C8A0050F3A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E76E393B25BA1E230050F3A7 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		E76E393F25BA1F040050F3A7 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		E76E3D1F25BF940B0050F3A7 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		E76E3D2025BF940B0050F3A7 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E771E5951F904F9D00554913 /* expressions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = expressions.plist; sourceTree = "<group>"; };
 		E7734E4C1EAA704100154C9F /* EggColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggColorCell.swift; sourceTree = "<group>"; };
 		E797D0A51EB28EC80072F0D8 /* EggColorBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggColorBox.swift; sourceTree = "<group>"; };
@@ -333,6 +362,7 @@
 		E7AC817C1C44C0E40091D46C /* Breed+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breed+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7AC817E1C44C0E40091D46C /* SpecialAttribute+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpecialAttribute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E7AC81801C44C0E40091D46C /* Variety+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Variety+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E7AF034C25D7310A00A81ADE /* AlarmUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUtility.swift; sourceTree = "<group>"; };
 		E7B01DB91C4359B10078F099 /* Chicken Saver Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chicken Saver Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B01DBC1C4359B10078F099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7B01DC11C4359B10078F099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -372,6 +402,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E76E392625BA0C8A0050F3A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B01DB61C4359B10078F099 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,11 +456,30 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		E76E392A25BA0C8A0050F3A7 /* MyAppExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E76E392B25BA0C8A0050F3A7 /* NotificationService.swift */,
+				E76E392D25BA0C8A0050F3A7 /* Info.plist */,
+				E76E393F25BA1F040050F3A7 /* UIImageExtensions.swift */,
+			);
+			path = MyAppExtension;
+			sourceTree = "<group>";
+		};
+		E76E393A25BA1DF30050F3A7 /* Exensions */ = {
+			isa = PBXGroup;
+			children = (
+				E76E393B25BA1E230050F3A7 /* UIImageExtension.swift */,
+			);
+			name = Exensions;
+			sourceTree = "<group>";
+		};
 		E7B01DB01C4359B10078F099 = {
 			isa = PBXGroup;
 			children = (
 				E7D3B4E01E8CB66600029436 /* Settings.bundle */,
 				E7B01DBB1C4359B10078F099 /* Chicken Saver Plus */,
+				E76E392A25BA0C8A0050F3A7 /* MyAppExtension */,
 				E7B01DBA1C4359B10078F099 /* Products */,
 				E7C6305A1E2EDB2800CBC45B /* Frameworks */,
 				05025F8A4BDA5509073DB2EF /* Pods */,
@@ -434,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				E7B01DB91C4359B10078F099 /* Chicken Saver Plus.app */,
+				E76E392925BA0C8A0050F3A7 /* MyAppExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -441,6 +498,7 @@
 		E7B01DBB1C4359B10078F099 /* Chicken Saver Plus */ = {
 			isa = PBXGroup;
 			children = (
+				E76E393A25BA1DF30050F3A7 /* Exensions */,
 				E7BEA4321E948E4700E27E6F /* CustomAnnotation */,
 				E7CF93F81E71C4CD0097FA97 /* CustomCells */,
 				E7DFB0E61E6CD8C9006E7A92 /* CustomViews */,
@@ -637,6 +695,9 @@
 		E7C6305D1E2EE42800CBC45B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E76E3D1F25BF940B0050F3A7 /* ImageDownloader.swift */,
+				E76E3D2025BF940B0050F3A7 /* NetworkError.swift */,
+				E7AF034C25D7310A00A81ADE /* AlarmUtility.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -675,6 +736,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E76E392825BA0C8A0050F3A7 /* MyAppExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E76E393325BA0C8A0050F3A7 /* Build configuration list for PBXNativeTarget "MyAppExtension" */;
+			buildPhases = (
+				E76E392525BA0C8A0050F3A7 /* Sources */,
+				E76E392625BA0C8A0050F3A7 /* Frameworks */,
+				E76E392725BA0C8A0050F3A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyAppExtension;
+			productName = MyAppExtension;
+			productReference = E76E392925BA0C8A0050F3A7 /* MyAppExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E7B01DB81C4359B10078F099 /* Chicken Saver Plus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7B01DCE1C4359B10078F099 /* Build configuration list for PBXNativeTarget "Chicken Saver Plus" */;
@@ -689,6 +767,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E76E392F25BA0C8A0050F3A7 /* PBXTargetDependency */,
 			);
 			name = "Chicken Saver Plus";
 			productName = "Chicken Saver Plus";
@@ -701,10 +780,15 @@
 		E7B01DB11C4359B10078F099 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1010;
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Caroline Gilleeny";
 				TargetAttributes = {
+					E76E392825BA0C8A0050F3A7 = {
+						CreatedOnToolsVersion = 12.2;
+						DevelopmentTeam = UU5MX3WN5Z;
+						ProvisioningStyle = Automatic;
+					};
 					E7B01DB81C4359B10078F099 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = UU5MX3WN5Z;
@@ -723,10 +807,9 @@
 			};
 			buildConfigurationList = E7B01DB41C4359B10078F099 /* Build configuration list for PBXProject "Chicken Saver Plus" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				fr,
@@ -737,11 +820,21 @@
 			projectRoot = "";
 			targets = (
 				E7B01DB81C4359B10078F099 /* Chicken Saver Plus */,
+				E76E392825BA0C8A0050F3A7 /* MyAppExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E76E392725BA0C8A0050F3A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E76E3D2E25BF953D0050F3A7 /* Assets.xcassets in Resources */,
+				E76E3D2B25BF95290050F3A7 /* peckingRooster.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B01DB71C4359B10078F099 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,6 +1016,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E76E392525BA0C8A0050F3A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E76E392C25BA0C8A0050F3A7 /* NotificationService.swift in Sources */,
+				E76E3D2825BF941A0050F3A7 /* NetworkError.swift in Sources */,
+				E76E3D2525BF94160050F3A7 /* ImageDownloader.swift in Sources */,
+				E76E394025BA1F040050F3A7 /* UIImageExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B01DB51C4359B10078F099 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -937,12 +1041,15 @@
 				E7D3B4E31E8D72C800029436 /* EggspressionView.swift in Sources */,
 				E7BDA7CE1EB2E45700AE38E1 /* ReusableEggColorView.swift in Sources */,
 				E7FF01B11E78F1E000440BCF /* EggColor+CoreDataClass.swift in Sources */,
+				E7AF034D25D7310A00A81ADE /* AlarmUtility.swift in Sources */,
 				E7299E011E84D347009B01B2 /* InfoVC.swift in Sources */,
 				E7FF019E1E77209700440BCF /* BreedDetailView.swift in Sources */,
 				E7AC81861C44C0E40091D46C /* SpecialAttribute+CoreDataProperties.swift in Sources */,
 				E7CF93FA1E71C4F40097FA97 /* BreedCell.swift in Sources */,
 				E7FF01B21E78F1E000440BCF /* Variety+CoreDataClass.swift in Sources */,
+				E76E393C25BA1E230050F3A7 /* UIImageExtension.swift in Sources */,
 				E7461C121E809F6100D64D2F /* MapVC.swift in Sources */,
+				E76E3D2225BF940B0050F3A7 /* NetworkError.swift in Sources */,
 				E7AC81881C44C0E40091D46C /* Variety+CoreDataProperties.swift in Sources */,
 				E798FFD91C7E453900420975 /* Day+CoreDataProperties.swift in Sources */,
 				E7B01DBD1C4359B10078F099 /* AppDelegate.swift in Sources */,
@@ -954,6 +1061,7 @@
 				E7BEA4381E95896200E27E6F /* CoopAnnotationView.swift in Sources */,
 				E7AC81821C44C0E40091D46C /* EggColor+CoreDataProperties.swift in Sources */,
 				E7C630591E2EC22900CBC45B /* Day+CoreDataClass.swift in Sources */,
+				E76E3D2125BF940B0050F3A7 /* ImageDownloader.swift in Sources */,
 				E7DFB0E81E6CD8F9006E7A92 /* TriviaView.swift in Sources */,
 				E7D93DB91C476EDA003075D1 /* NSManagedObject+Relationship.swift in Sources */,
 				E797D0A61EB28EC80072F0D8 /* EggColorBox.swift in Sources */,
@@ -962,6 +1070,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E76E392F25BA0C8A0050F3A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E76E392825BA0C8A0050F3A7 /* MyAppExtension */;
+			targetProxy = E76E392E25BA0C8A0050F3A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7699E5D1C484C0B00F93C63 /* Localization.strings */ = {
@@ -994,6 +1110,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E76E393125BA0C8A0050F3A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UU5MX3WN5Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MyAppExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus.MyAppExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E76E393225BA0C8A0050F3A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = UU5MX3WN5Z;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MyAppExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 4.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus.MyAppExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		E7B01DCC1C4359B10078F099 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1017,6 +1193,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1042,7 +1219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1074,6 +1251,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1092,7 +1270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1105,21 +1283,25 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2DD6A7903DCCF87CE0290919 /* Pods-Chicken Saver Plus.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "Chicken Saver Plus/Chicken Saver Plus.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1127,27 +1309,40 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 04A9493AF45A9B7BECED8427 /* Pods-Chicken Saver Plus.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = "Chicken Saver Plus/Chicken Saver Plus.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = UU5MX3WN5Z;
 				INFOPLIST_FILE = "Chicken Saver Plus/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinegilleeny.ChickenSaverPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E76E393325BA0C8A0050F3A7 /* Build configuration list for PBXNativeTarget "MyAppExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E76E393125BA0C8A0050F3A7 /* Debug */,
+				E76E393225BA0C8A0050F3A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E7B01DB41C4359B10078F099 /* Build configuration list for PBXProject "Chicken Saver Plus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

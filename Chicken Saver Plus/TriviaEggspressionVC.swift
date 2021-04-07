@@ -46,7 +46,17 @@ class TriviaEggspressionVC: UIViewController {
     var triviaViewHidden:TriviaView?
     var visibleEggView: UIImageView?
     let eggRatio: CGFloat = 1.5
-    
+  
+  var isLandscape: Bool {
+    return UIApplication.shared.windows
+        .first?
+        .windowScene?
+        .interfaceOrientation
+        .isLandscape ?? false
+  }
+  var lastIsLandscape: Bool = false
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,7 +84,7 @@ class TriviaEggspressionVC: UIViewController {
         if self.tabBarController?.selectedViewController == self {
             print("vc is self")
             //the view is currently displayed
-            print("viewWillTransition() - UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
+//            print("viewWillTransition() - UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
             DispatchQueue.main.async(execute: {
                 if self.visibleTriviaView != nil {
                     self.visibleTriviaView?.frame = self.backgroundView.frame
@@ -141,7 +151,7 @@ class TriviaEggspressionVC: UIViewController {
         mainView.backgroundColor = AppColor.darkTextColor
         if visibleTriviaView == nil {
             segmentedControl.tintColor = UIColor.white
-            print("UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
+//            print("UIDevice.current.orientation.isLandscape: \(UIDevice.current.orientation.isLandscape), UIApplication.shared.statusBarOrientation.isLandscape: \(UIApplication.shared.statusBarOrientation.isLandscape),  backgroundView.frame: \(self.backgroundView.frame))")
             visibleTriviaView = TriviaView(frame: backgroundView.frame)
             visibleTriviaView?.backgroundColor = UIColor.clear
             visibleTriviaView?.trivia = triviaStrings[triviaIndex]
